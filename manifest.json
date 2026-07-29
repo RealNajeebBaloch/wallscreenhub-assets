@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "id": "nature",
+      "name": "Nature",
+      "wallpapers": [
+        {
+          "id": "nature_001",
+          "full": "wallpapers/nature/nature_001.webp",
+          "thumb": "wallpapers/nature/thumbs/nature_001.webp"
+        }
+      ]
+    },
+    {
+      "id": "abstract",
+      "name": "Abstract",
+      "wallpapers": [
+        {
+          "id": "abstract_001",
+          "full": "wallpapers/abstract/abstract_001.webp",
+          "thumb": "wallpapers/abstract/thumbs/abstract_001.webp"
+        }
+      ]
+    },
+    {
+      "id": "minimal",
+      "name": "Minimal",
+      "wallpapers": [
+        {
+          "id": "minimal_001",
+          "full": "wallpapers/minimal/minimal_001.webp",
+          "thumb": "wallpapers/minimal/thumbs/minimal_001.webp"
+        }
+      ]
+    }
+  ]
+}
