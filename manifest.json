@@ -1,38 +1,1174 @@
 {
-  "version": 1,
-  "categories": [
-    {
-      "id": "nature",
-      "name": "Nature",
-      "wallpapers": [
-        {
-          "id": "nature_001",
-          "full": "wallpapers/nature/nature_001.webp",
-          "thumb": "wallpapers/nature/thumbs/nature_001.webp"
-        }
-      ]
-    },
-    {
-      "id": "abstract",
-      "name": "Abstract",
-      "wallpapers": [
-        {
-          "id": "abstract_001",
-          "full": "wallpapers/abstract/abstract_001.webp",
-          "thumb": "wallpapers/abstract/thumbs/abstract_001.webp"
-        }
-      ]
-    },
-    {
-      "id": "minimal",
-      "name": "Minimal",
-      "wallpapers": [
-        {
-          "id": "minimal_001",
-          "full": "wallpapers/minimal/minimal_001.webp",
-          "thumb": "wallpapers/minimal/thumbs/minimal_001.webp"
-        }
-      ]
-    }
-  ]
+    "version":  1,
+    "categories":  [
+                       {
+                           "id":  "nature",
+                           "name":  "Nature",
+                           "wallpapers":  [
+                                              {
+                                                  "id":  "nature_001",
+                                                  "full":  "wallpapers/nature/nature_001.webp",
+                                                  "thumb":  "wallpapers/nature/thumbs/nature_001.webp"
+                                              },
+                                              {
+                                                  "id":  "cyberpunk_008",
+                                                  "full":  "wallpapers/nature/cyberpunk_008.webp",
+                                                  "thumb":  "wallpapers/nature/thumbs/cyberpunk_008.webp"
+                                              },
+                                              {
+                                                  "id":  "cyberpunk_008",
+                                                  "full":  "wallpapers/nature/cyberpunk_008.webp",
+                                                  "thumb":  "wallpapers/nature/thumbs/cyberpunk_008.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/nature/.webp",
+                                                  "thumb":  "wallpapers/nature/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/nature/.webp",
+                                                  "thumb":  "wallpapers/nature/thumbs/.webp"
+                                              }
+                                          ]
+                       },
+                       {
+                           "id":  "abstract",
+                           "name":  "Abstract",
+                           "wallpapers":  [
+                                              {
+                                                  "id":  "abstract_001",
+                                                  "full":  "wallpapers/abstract/abstract_001.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_001.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/abstract/.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/.webp"
+                                              }
+                                          ]
+                       },
+                       {
+                           "id":  "minimal",
+                           "name":  "Minimal",
+                           "wallpapers":  [
+                                              {
+                                                  "id":  "minimal_001",
+                                                  "full":  "wallpapers/minimal/minimal_001.webp",
+                                                  "thumb":  "wallpapers/minimal/thumbs/minimal_001.webp"
+                                              }
+                                          ]
+                       },
+                       {
+                           "id":  "anime",
+                           "name":  "Anime",
+                           "wallpapers":  [
+                                              {
+                                                  "id":  "anime_001",
+                                                  "full":  "wallpapers/anime/anime_001.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_001.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_002",
+                                                  "full":  "wallpapers/anime/anime_002.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_002.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_003",
+                                                  "full":  "wallpapers/anime/anime_003.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_003.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_004",
+                                                  "full":  "wallpapers/anime/anime_004.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_004.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_005",
+                                                  "full":  "wallpapers/anime/anime_005.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_005.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_006",
+                                                  "full":  "wallpapers/anime/anime_006.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_006.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_007",
+                                                  "full":  "wallpapers/anime/anime_007.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_007.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_008",
+                                                  "full":  "wallpapers/anime/anime_008.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_008.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_009",
+                                                  "full":  "wallpapers/anime/anime_009.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_009.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_010",
+                                                  "full":  "wallpapers/anime/anime_010.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_010.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_011",
+                                                  "full":  "wallpapers/anime/anime_011.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_011.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_012",
+                                                  "full":  "wallpapers/anime/anime_012.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_012.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_013",
+                                                  "full":  "wallpapers/anime/anime_013.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_013.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_014",
+                                                  "full":  "wallpapers/anime/anime_014.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_014.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_015",
+                                                  "full":  "wallpapers/anime/anime_015.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_015.webp"
+                                              },
+                                              {
+                                                  "id":  "anime_016",
+                                                  "full":  "wallpapers/anime/anime_016.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/anime_016.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/anime/.webp",
+                                                  "thumb":  "wallpapers/anime/thumbs/.webp"
+                                              }
+                                          ]
+                       },
+                       {
+                           "id":  "cats",
+                           "name":  "Cats",
+                           "wallpapers":  [
+                                              {
+                                                  "id":  "cats_001",
+                                                  "full":  "wallpapers/cats/cats_001.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/cats_001.webp"
+                                              },
+                                              {
+                                                  "id":  "cats_002",
+                                                  "full":  "wallpapers/cats/cats_002.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/cats_002.webp"
+                                              },
+                                              {
+                                                  "id":  "cats_003",
+                                                  "full":  "wallpapers/cats/cats_003.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/cats_003.webp"
+                                              },
+                                              {
+                                                  "id":  "cats_004",
+                                                  "full":  "wallpapers/cats/cats_004.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/cats_004.webp"
+                                              },
+                                              {
+                                                  "id":  "cats_005",
+                                                  "full":  "wallpapers/cats/cats_005.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/cats_005.webp"
+                                              },
+                                              {
+                                                  "id":  "cats_006",
+                                                  "full":  "wallpapers/cats/cats_006.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/cats_006.webp"
+                                              },
+                                              {
+                                                  "id":  "cats_007",
+                                                  "full":  "wallpapers/cats/cats_007.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/cats_007.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cats/.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cats/.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cats/.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cats/.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cats/.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cats/.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cats/.webp",
+                                                  "thumb":  "wallpapers/cats/thumbs/.webp"
+                                              }
+                                          ]
+                       },
+                       {
+                           "id":  "cute",
+                           "name":  "Cute",
+                           "wallpapers":  [
+                                              {
+                                                  "id":  "cute_001",
+                                                  "full":  "wallpapers/cute/cute_001.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_001.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_002",
+                                                  "full":  "wallpapers/cute/cute_002.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_002.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_003",
+                                                  "full":  "wallpapers/cute/cute_003.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_003.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_004",
+                                                  "full":  "wallpapers/cute/cute_004.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_004.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_005",
+                                                  "full":  "wallpapers/cute/cute_005.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_005.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_006",
+                                                  "full":  "wallpapers/cute/cute_006.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_006.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_007",
+                                                  "full":  "wallpapers/cute/cute_007.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_007.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_008",
+                                                  "full":  "wallpapers/cute/cute_008.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_008.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_009",
+                                                  "full":  "wallpapers/cute/cute_009.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_009.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_010",
+                                                  "full":  "wallpapers/cute/cute_010.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_010.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_011",
+                                                  "full":  "wallpapers/cute/cute_011.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_011.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_012",
+                                                  "full":  "wallpapers/cute/cute_012.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_012.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_013",
+                                                  "full":  "wallpapers/cute/cute_013.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_013.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_014",
+                                                  "full":  "wallpapers/cute/cute_014.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_014.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_015",
+                                                  "full":  "wallpapers/cute/cute_015.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_015.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_016",
+                                                  "full":  "wallpapers/cute/cute_016.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_016.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_017",
+                                                  "full":  "wallpapers/cute/cute_017.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_017.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cute/.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/.webp"
+                                              }
+                                          ]
+                       },
+                       {
+                           "id":  "cyberpunk",
+                           "name":  "Cyberpunk",
+                           "wallpapers":  [
+                                              {
+                                                  "id":  "cyberpunk_001",
+                                                  "full":  "wallpapers/cyberpunk/cyberpunk_001.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/cyberpunk_001.webp"
+                                              },
+                                              {
+                                                  "id":  "cyberpunk_002",
+                                                  "full":  "wallpapers/cyberpunk/cyberpunk_002.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/cyberpunk_002.webp"
+                                              },
+                                              {
+                                                  "id":  "cyberpunk_003",
+                                                  "full":  "wallpapers/cyberpunk/cyberpunk_003.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/cyberpunk_003.webp"
+                                              },
+                                              {
+                                                  "id":  "cyberpunk_004",
+                                                  "full":  "wallpapers/cyberpunk/cyberpunk_004.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/cyberpunk_004.webp"
+                                              },
+                                              {
+                                                  "id":  "cyberpunk_005",
+                                                  "full":  "wallpapers/cyberpunk/cyberpunk_005.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/cyberpunk_005.webp"
+                                              },
+                                              {
+                                                  "id":  "cyberpunk_006",
+                                                  "full":  "wallpapers/cyberpunk/cyberpunk_006.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/cyberpunk_006.webp"
+                                              },
+                                              {
+                                                  "id":  "cyberpunk_007",
+                                                  "full":  "wallpapers/cyberpunk/cyberpunk_007.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/cyberpunk_007.webp"
+                                              },
+                                              {
+                                                  "id":  "cyberpunk_008",
+                                                  "full":  "wallpapers/cyberpunk/cyberpunk_008.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/cyberpunk_008.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cyberpunk/.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cyberpunk/.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cyberpunk/.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cyberpunk/.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cyberpunk/.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cyberpunk/.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cyberpunk/.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/cyberpunk/.webp",
+                                                  "thumb":  "wallpapers/cyberpunk/thumbs/.webp"
+                                              }
+                                          ]
+                       },
+                       {
+                           "id":  "scenery",
+                           "name":  "Scenery",
+                           "wallpapers":  [
+                                              {
+                                                  "id":  "scenery_001",
+                                                  "full":  "wallpapers/scenery/scenery_001.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_001.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_002",
+                                                  "full":  "wallpapers/scenery/scenery_002.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_002.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_003",
+                                                  "full":  "wallpapers/scenery/scenery_003.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_003.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_004",
+                                                  "full":  "wallpapers/scenery/scenery_004.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_004.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_005",
+                                                  "full":  "wallpapers/scenery/scenery_005.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_005.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_006",
+                                                  "full":  "wallpapers/scenery/scenery_006.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_006.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_007",
+                                                  "full":  "wallpapers/scenery/scenery_007.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_007.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_008",
+                                                  "full":  "wallpapers/scenery/scenery_008.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_008.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_009",
+                                                  "full":  "wallpapers/scenery/scenery_009.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_009.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_010",
+                                                  "full":  "wallpapers/scenery/scenery_010.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_010.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_011",
+                                                  "full":  "wallpapers/scenery/scenery_011.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_011.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_012",
+                                                  "full":  "wallpapers/scenery/scenery_012.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_012.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_013",
+                                                  "full":  "wallpapers/scenery/scenery_013.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_013.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_014",
+                                                  "full":  "wallpapers/scenery/scenery_014.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_014.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_015",
+                                                  "full":  "wallpapers/scenery/scenery_015.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_015.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_016",
+                                                  "full":  "wallpapers/scenery/scenery_016.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_016.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_017",
+                                                  "full":  "wallpapers/scenery/scenery_017.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_017.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_018",
+                                                  "full":  "wallpapers/scenery/scenery_018.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_018.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_019",
+                                                  "full":  "wallpapers/scenery/scenery_019.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_019.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_020",
+                                                  "full":  "wallpapers/scenery/scenery_020.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_020.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_021",
+                                                  "full":  "wallpapers/scenery/scenery_021.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_021.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_022",
+                                                  "full":  "wallpapers/scenery/scenery_022.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_022.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_023",
+                                                  "full":  "wallpapers/scenery/scenery_023.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_023.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_024",
+                                                  "full":  "wallpapers/scenery/scenery_024.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_024.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_025",
+                                                  "full":  "wallpapers/scenery/scenery_025.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_025.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_026",
+                                                  "full":  "wallpapers/scenery/scenery_026.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_026.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_027",
+                                                  "full":  "wallpapers/scenery/scenery_027.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_027.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_028",
+                                                  "full":  "wallpapers/scenery/scenery_028.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_028.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_029",
+                                                  "full":  "wallpapers/scenery/scenery_029.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_029.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_030",
+                                                  "full":  "wallpapers/scenery/scenery_030.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_030.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/scenery/.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/.webp"
+                                              }
+                                          ]
+                       },
+                       {
+                           "id":  "surreal",
+                           "name":  "Surreal",
+                           "wallpapers":  [
+                                              {
+                                                  "id":  "surreal_001",
+                                                  "full":  "wallpapers/surreal/surreal_001.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_001.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_002",
+                                                  "full":  "wallpapers/surreal/surreal_002.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_002.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_003",
+                                                  "full":  "wallpapers/surreal/surreal_003.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_003.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_004",
+                                                  "full":  "wallpapers/surreal/surreal_004.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_004.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_005",
+                                                  "full":  "wallpapers/surreal/surreal_005.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_005.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_006",
+                                                  "full":  "wallpapers/surreal/surreal_006.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_006.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_007",
+                                                  "full":  "wallpapers/surreal/surreal_007.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_007.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_008",
+                                                  "full":  "wallpapers/surreal/surreal_008.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_008.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_009",
+                                                  "full":  "wallpapers/surreal/surreal_009.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_009.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_010",
+                                                  "full":  "wallpapers/surreal/surreal_010.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_010.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_011",
+                                                  "full":  "wallpapers/surreal/surreal_011.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_011.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_012",
+                                                  "full":  "wallpapers/surreal/surreal_012.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_012.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_013",
+                                                  "full":  "wallpapers/surreal/surreal_013.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_013.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_014",
+                                                  "full":  "wallpapers/surreal/surreal_014.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_014.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_015",
+                                                  "full":  "wallpapers/surreal/surreal_015.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_015.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_016",
+                                                  "full":  "wallpapers/surreal/surreal_016.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_016.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_017",
+                                                  "full":  "wallpapers/surreal/surreal_017.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_017.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_018",
+                                                  "full":  "wallpapers/surreal/surreal_018.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_018.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_019",
+                                                  "full":  "wallpapers/surreal/surreal_019.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_019.webp"
+                                              },
+                                              {
+                                                  "id":  "surreal_020",
+                                                  "full":  "wallpapers/surreal/surreal_020.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/surreal_020.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              },
+                                              {
+                                                  "id":  null,
+                                                  "full":  "wallpapers/surreal/.webp",
+                                                  "thumb":  "wallpapers/surreal/thumbs/.webp"
+                                              }
+                                          ]
+                       }
+                   ]
 }
