@@ -36,9 +36,13 @@ foreach ($catFolder in $categories) {
             }
     )
 
+    # Measure-Object's .Maximum comes back as a Double even for all-integer
+    # input - the {1:D3} format specifier below only accepts real integer
+    # types, so without this explicit [int] cast every single file in every
+    # category fails with "Format specifier was invalid".
     $nextNumber = 1
     if ($existingNumbers.Count -gt 0) {
-        $nextNumber = ($existingNumbers | Measure-Object -Maximum).Maximum + 1
+        $nextNumber = [int](($existingNumbers | Measure-Object -Maximum).Maximum) + 1
     }
 
     # Accept already-webp sources too, not just png/jpg/jpeg.
