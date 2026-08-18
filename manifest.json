@@ -270,6 +270,46 @@
                                                   "id":  "cars_016",
                                                   "full":  "wallpapers/cars/cars_016.webp",
                                                   "thumb":  "wallpapers/cars/thumbs/cars_016.webp"
+                                              },
+                                              {
+                                                  "id":  "cars_017",
+                                                  "full":  "wallpapers/cars/cars_017.webp",
+                                                  "thumb":  "wallpapers/cars/thumbs/cars_017.webp"
+                                              },
+                                              {
+                                                  "id":  "cars_018",
+                                                  "full":  "wallpapers/cars/cars_018.webp",
+                                                  "thumb":  "wallpapers/cars/thumbs/cars_018.webp"
+                                              },
+                                              {
+                                                  "id":  "cars_019",
+                                                  "full":  "wallpapers/cars/cars_019.webp",
+                                                  "thumb":  "wallpapers/cars/thumbs/cars_019.webp"
+                                              },
+                                              {
+                                                  "id":  "cars_020",
+                                                  "full":  "wallpapers/cars/cars_020.webp",
+                                                  "thumb":  "wallpapers/cars/thumbs/cars_020.webp"
+                                              },
+                                              {
+                                                  "id":  "cars_021",
+                                                  "full":  "wallpapers/cars/cars_021.webp",
+                                                  "thumb":  "wallpapers/cars/thumbs/cars_021.webp"
+                                              },
+                                              {
+                                                  "id":  "cars_022",
+                                                  "full":  "wallpapers/cars/cars_022.webp",
+                                                  "thumb":  "wallpapers/cars/thumbs/cars_022.webp"
+                                              },
+                                              {
+                                                  "id":  "cars_023",
+                                                  "full":  "wallpapers/cars/cars_023.webp",
+                                                  "thumb":  "wallpapers/cars/thumbs/cars_023.webp"
+                                              },
+                                              {
+                                                  "id":  "cars_024",
+                                                  "full":  "wallpapers/cars/cars_024.webp",
+                                                  "thumb":  "wallpapers/cars/thumbs/cars_024.webp"
                                               }
                                           ]
                        },
@@ -1014,6 +1054,11 @@
                                                   "id":  "flowers_012",
                                                   "full":  "wallpapers/flowers/flowers_012.webp",
                                                   "thumb":  "wallpapers/flowers/thumbs/flowers_012.webp"
+                                              },
+                                              {
+                                                  "id":  "flowers_013",
+                                                  "full":  "wallpapers/flowers/flowers_013.webp",
+                                                  "thumb":  "wallpapers/flowers/thumbs/flowers_013.webp"
                                               }
                                           ]
                        },
@@ -1027,49 +1072,9 @@
                                                   "thumb":  "wallpapers/futuristic/thumbs/futuristic_001.webp"
                                               },
                                               {
-                                                  "id":  "futuristic_002",
-                                                  "full":  "wallpapers/futuristic/futuristic_002.webp",
-                                                  "thumb":  "wallpapers/futuristic/thumbs/futuristic_002.webp"
-                                              },
-                                              {
-                                                  "id":  "futuristic_003",
-                                                  "full":  "wallpapers/futuristic/futuristic_003.webp",
-                                                  "thumb":  "wallpapers/futuristic/thumbs/futuristic_003.webp"
-                                              },
-                                              {
-                                                  "id":  "futuristic_004",
-                                                  "full":  "wallpapers/futuristic/futuristic_004.webp",
-                                                  "thumb":  "wallpapers/futuristic/thumbs/futuristic_004.webp"
-                                              },
-                                              {
-                                                  "id":  "futuristic_005",
-                                                  "full":  "wallpapers/futuristic/futuristic_005.webp",
-                                                  "thumb":  "wallpapers/futuristic/thumbs/futuristic_005.webp"
-                                              },
-                                              {
-                                                  "id":  "futuristic_006",
-                                                  "full":  "wallpapers/futuristic/futuristic_006.webp",
-                                                  "thumb":  "wallpapers/futuristic/thumbs/futuristic_006.webp"
-                                              },
-                                              {
-                                                  "id":  "futuristic_007",
-                                                  "full":  "wallpapers/futuristic/futuristic_007.webp",
-                                                  "thumb":  "wallpapers/futuristic/thumbs/futuristic_007.webp"
-                                              },
-                                              {
-                                                  "id":  "futuristic_008",
-                                                  "full":  "wallpapers/futuristic/futuristic_008.webp",
-                                                  "thumb":  "wallpapers/futuristic/thumbs/futuristic_008.webp"
-                                              },
-                                              {
                                                   "id":  "futuristic_009",
                                                   "full":  "wallpapers/futuristic/futuristic_009.webp",
                                                   "thumb":  "wallpapers/futuristic/thumbs/futuristic_009.webp"
-                                              },
-                                              {
-                                                  "id":  "futuristic_010",
-                                                  "full":  "wallpapers/futuristic/futuristic_010.webp",
-                                                  "thumb":  "wallpapers/futuristic/thumbs/futuristic_010.webp"
                                               },
                                               {
                                                   "id":  "futuristic_011",
@@ -1293,11 +1298,6 @@
                                                   "id":  "nature_001",
                                                   "full":  "wallpapers/nature/nature_001.webp",
                                                   "thumb":  "wallpapers/nature/thumbs/nature_001.webp"
-                                              },
-                                              {
-                                                  "id":  "nature_002",
-                                                  "full":  "wallpapers/nature/nature_002.webp",
-                                                  "thumb":  "wallpapers/nature/thumbs/nature_002.webp"
                                               },
                                               {
                                                   "id":  "nature_003",
