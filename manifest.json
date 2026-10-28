@@ -6,19 +6,9 @@
                            "name":  "Abstract",
                            "wallpapers":  [
                                               {
-                                                  "id":  "abstract_002",
-                                                  "full":  "wallpapers/abstract/abstract_002.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_002.webp"
-                                              },
-                                              {
                                                   "id":  "abstract_003",
                                                   "full":  "wallpapers/abstract/abstract_003.webp",
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_003.webp"
-                                              },
-                                              {
-                                                  "id":  "abstract_004",
-                                                  "full":  "wallpapers/abstract/abstract_004.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_004.webp"
                                               },
                                               {
                                                   "id":  "abstract_005",
@@ -740,51 +730,6 @@
                                                   "thumb":  "wallpapers/cute/thumbs/cute_017.webp"
                                               },
                                               {
-                                                  "id":  "cute_018",
-                                                  "full":  "wallpapers/cute/cute_018.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_018.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_019",
-                                                  "full":  "wallpapers/cute/cute_019.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_019.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_020",
-                                                  "full":  "wallpapers/cute/cute_020.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_020.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_021",
-                                                  "full":  "wallpapers/cute/cute_021.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_021.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_022",
-                                                  "full":  "wallpapers/cute/cute_022.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_022.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_023",
-                                                  "full":  "wallpapers/cute/cute_023.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_023.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_024",
-                                                  "full":  "wallpapers/cute/cute_024.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_024.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_025",
-                                                  "full":  "wallpapers/cute/cute_025.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_025.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_026",
-                                                  "full":  "wallpapers/cute/cute_026.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_026.webp"
-                                              },
-                                              {
                                                   "id":  "cute_027",
                                                   "full":  "wallpapers/cute/cute_027.webp",
                                                   "thumb":  "wallpapers/cute/thumbs/cute_027.webp"
@@ -1131,11 +1076,6 @@
                            "id":  "flowers",
                            "name":  "Flowers",
                            "wallpapers":  [
-                                              {
-                                                  "id":  "flowers_001",
-                                                  "full":  "wallpapers/flowers/flowers_001.webp",
-                                                  "thumb":  "wallpapers/flowers/thumbs/flowers_001.webp"
-                                              },
                                               {
                                                   "id":  "flowers_002",
                                                   "full":  "wallpapers/flowers/flowers_002.webp",
@@ -1625,16 +1565,6 @@
                            "id":  "nature",
                            "name":  "Nature",
                            "wallpapers":  [
-                                              {
-                                                  "id":  "nature_003",
-                                                  "full":  "wallpapers/nature/nature_003.webp",
-                                                  "thumb":  "wallpapers/nature/thumbs/nature_003.webp"
-                                              },
-                                              {
-                                                  "id":  "nature_004",
-                                                  "full":  "wallpapers/nature/nature_004.webp",
-                                                  "thumb":  "wallpapers/nature/thumbs/nature_004.webp"
-                                              },
                                               {
                                                   "id":  "nature_005",
                                                   "full":  "wallpapers/nature/nature_005.webp",

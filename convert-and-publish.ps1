@@ -705,6 +705,7 @@ $sourceHashSet = @{}
 # Source files/folders that could not be read or hashed this run. If any
 # exist the source list is incomplete, so removing wallpapers is unsafe.
 $unreadableSourceCount = 0
+$unreadableSourceList = New-Object System.Collections.ArrayList
 
 $removedWallpaperCount = 0
 $removedOrphanThumbCount = 0
@@ -746,6 +747,7 @@ foreach ($categoryFolder in $sourceCategories) {
     if (@($listErrors).Count -gt 0) {
 
         $unreadableSourceCount++
+        [void]$unreadableSourceList.Add("Folder could not be fully read: $($categoryFolder.FullName)")
 
         Add-Problem "Could not fully read source category '$categoryId' ($(@($listErrors).Count) error(s)). Removal of deleted wallpapers is disabled for this run."
     }
@@ -771,6 +773,7 @@ foreach ($categoryFolder in $sourceCategories) {
             if ($format -eq "unknown") {
 
                 $unreadableSourceCount++
+                [void]$unreadableSourceList.Add("Not a valid WebP/JPEG/PNG: $($img.FullName)")
 
                 Add-Problem "Unsupported or damaged source (not WebP/JPEG/PNG): $($img.FullName)"
                 continue
@@ -1013,6 +1016,7 @@ foreach ($categoryFolder in $sourceCategories) {
         catch {
 
             $unreadableSourceCount++
+            [void]$unreadableSourceList.Add("Failed to process: $($img.FullName) ($($_.Exception.Message))")
 
             Add-Problem "FAILED processing $($img.FullName): $($_.Exception.Message)"
         }
@@ -1123,7 +1127,16 @@ if ($NoPrune) {
 }
 elseif ($unreadableSourceCount -gt 0) {
 
-    Add-Problem "SAFETY STOP: $unreadableSourceCount source file/folder problem(s) this run, so the source list is incomplete. No wallpapers were removed. Fix the source files and run again."
+    Write-Host "REMOVAL SKIPPED - the source could not be read completely." -ForegroundColor Yellow
+    Write-Host "Removing now could delete wallpapers that are really still in your source." -ForegroundColor Yellow
+    Write-Host "Fix, replace or delete these files, then run again:" -ForegroundColor Yellow
+    Write-Host ""
+
+    foreach ($item in $unreadableSourceList) {
+        Write-Host " - $item" -ForegroundColor Yellow
+    }
+
+    Add-Problem "Wallpaper removal skipped: $unreadableSourceCount source problem(s) (listed above)."
 }
 elseif ($sourceHashSet.Count -eq 0) {
 
@@ -1131,45 +1144,95 @@ elseif ($sourceHashSet.Count -eq 0) {
 }
 else {
 
-    $liveEntries = @(
-        $existingByHash.GetEnumerator() |
-            Where-Object { Test-Path -LiteralPath $_.Value.full }
-    )
+    # --------------------------------------------------------
+    # Look at EVERY wallpaper file physically in the repo (not
+    # only the hash index, which holds just one file per hash).
+    # --------------------------------------------------------
 
-    $staleWallpapers = @(
-        $liveEntries |
-            Where-Object { -not $sourceHashSet.ContainsKey($_.Key) } |
-            Sort-Object { $_.Value.id }
-    )
+    $published = New-Object System.Collections.ArrayList
 
-    if ($staleWallpapers.Count -eq 0) {
+    foreach ($categoryFolder in @(Get-ChildItem -Path $wallpapersRoot -Directory -ErrorAction SilentlyContinue)) {
 
-        Write-Host "None. Every published wallpaper still exists in the source."
+        $thumbFolder = Join-Path $categoryFolder.FullName "thumbs"
+
+        foreach ($file in @(Get-ChildItem -LiteralPath $categoryFolder.FullName -Filter "*.webp" -File -ErrorAction SilentlyContinue)) {
+
+            [void]$published.Add([pscustomobject]@{
+                Hash     = (Get-FileHashValue $file.FullName)
+                Id       = [System.IO.Path]::GetFileNameWithoutExtension($file.Name)
+                Category = $categoryFolder.Name
+                Full     = $file.FullName
+                Thumb    = (Join-Path $thumbFolder $file.Name)
+            })
+        }
+    }
+
+    $toRemove = New-Object System.Collections.ArrayList
+
+    foreach ($wallpaper in $published) {
+
+        if (-not $sourceHashSet.ContainsKey($wallpaper.Hash)) {
+
+            [void]$toRemove.Add([pscustomobject]@{
+                Item   = $wallpaper
+                Reason = "not in source"
+            })
+
+            continue
+        }
+
+        # Same image stored twice in the repo: keep the one the script
+        # tracks, remove the extra copy.
+        if ($existingByHash.ContainsKey($wallpaper.Hash)) {
+
+            $canonical = $existingByHash[$wallpaper.Hash]
+
+            if (
+                $canonical.full -ne $wallpaper.Full -and
+                (Test-Path -LiteralPath $canonical.full)
+            ) {
+
+                [void]$toRemove.Add([pscustomobject]@{
+                    Item   = $wallpaper
+                    Reason = "duplicate copy of $($canonical.id)"
+                })
+            }
+        }
+    }
+
+    Write-Host "Source images (unique):    $($sourceHashSet.Count)"
+    Write-Host "Wallpapers in repo:        $($published.Count)"
+    Write-Host "To remove:                 $($toRemove.Count)"
+    Write-Host ""
+
+    if ($toRemove.Count -eq 0) {
+
+        Write-Host "None. Every wallpaper in the repo exists in the source."
     }
     elseif (
-        $staleWallpapers.Count -ge 5 -and
-        ($staleWallpapers.Count * 2) -gt $liveEntries.Count -and
+        $toRemove.Count -ge 5 -and
+        ($toRemove.Count * 2) -gt $published.Count -and
         -not $ForcePrune
     ) {
 
-        Add-Problem "SAFETY STOP: $($staleWallpapers.Count) of $($liveEntries.Count) published wallpapers are missing from the source. That is more than half, so nothing was removed. If this is intentional, run again with -ForcePrune."
+        Add-Problem "SAFETY STOP: $($toRemove.Count) of $($published.Count) wallpapers would be removed. That is more than half, so nothing was removed. If this is intentional, run again with -ForcePrune."
     }
     else {
 
-        foreach ($entry in $staleWallpapers) {
+        foreach ($entry in $toRemove) {
 
-            $info = $entry.Value
+            $info = $entry.Item
 
-            Remove-IfExists $info.full
-            Remove-IfExists $info.thumb
+            Remove-IfExists $info.Full
+            Remove-IfExists $info.Thumb
 
-            if (Test-Path -LiteralPath $info.full) {
+            if (Test-Path -LiteralPath $info.Full) {
 
-                Add-Problem "Could not remove wallpaper no longer in source: $($info.full)"
+                Add-Problem "Could not remove wallpaper: $($info.Full)"
                 continue
             }
 
-            Write-Host "Removed (not in source): $($info.id)"
+            Write-Host "Removed $($info.Category)/$($info.Id)  ($($entry.Reason))"
 
             $removedWallpaperCount++
         }
@@ -1178,29 +1241,63 @@ else {
         Write-Host "Wallpapers removed: $removedWallpaperCount"
     }
 
-    # Thumbnails whose full image no longer exists are orphans.
+    # --------------------------------------------------------
+    # Leftovers inside category folders:
+    #   - thumbnails whose full image no longer exists
+    #   - stray image files that are not .webp (old copies)
+    # --------------------------------------------------------
+
+    $strayExtensions = @(".png", ".jpg", ".jpeg", ".gif", ".bmp", ".avif", ".tif", ".tiff")
+
     foreach ($categoryFolder in @(Get-ChildItem -Path $wallpapersRoot -Directory -ErrorAction SilentlyContinue)) {
 
         $thumbDir = Join-Path $categoryFolder.FullName "thumbs"
 
-        if (-not (Test-Path -LiteralPath $thumbDir)) { continue }
+        if (Test-Path -LiteralPath $thumbDir) {
 
-        foreach ($thumb in @(Get-ChildItem -Path $thumbDir -Filter "*.webp" -File -ErrorAction SilentlyContinue)) {
+            foreach ($thumb in @(Get-ChildItem -LiteralPath $thumbDir -Filter "*.webp" -File -ErrorAction SilentlyContinue)) {
 
-            $fullPath = Join-Path $categoryFolder.FullName $thumb.Name
+                $fullPath = Join-Path $categoryFolder.FullName $thumb.Name
 
-            if (-not (Test-Path -LiteralPath $fullPath)) {
+                if (-not (Test-Path -LiteralPath $fullPath)) {
 
-                Remove-IfExists $thumb.FullName
+                    Remove-IfExists $thumb.FullName
 
-                Write-Host "Removed orphan thumbnail: $($categoryFolder.Name)/thumbs/$($thumb.Name)"
+                    Write-Host "Removed orphan thumbnail: $($categoryFolder.Name)/thumbs/$($thumb.Name)"
 
-                $removedOrphanThumbCount++
+                    $removedOrphanThumbCount++
+                }
+            }
+        }
+
+        $folders = @($categoryFolder.FullName)
+
+        if (Test-Path -LiteralPath $thumbDir) { $folders += $thumbDir }
+
+        foreach ($folderPath in $folders) {
+
+            foreach ($other in @(Get-ChildItem -LiteralPath $folderPath -File -ErrorAction SilentlyContinue)) {
+
+                $ext = $other.Extension.ToLowerInvariant()
+
+                if ($ext -eq ".webp") { continue }
+
+                if ($strayExtensions -contains $ext) {
+
+                    Remove-IfExists $other.FullName
+
+                    Write-Host "Removed stray image file: $($categoryFolder.Name)/$($other.Name)"
+
+                    $removedOrphanThumbCount++
+                }
+                else {
+
+                    Write-Warning "Unknown file in assets (left alone): $($other.FullName)"
+                }
             }
         }
     }
 }
-
 
 # ============================================================
 # VERIFY: EVERY PUBLISHED WALLPAPER MUST HAVE A THUMBNAIL
