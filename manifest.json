@@ -16,11 +16,6 @@
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_005.webp"
                                               },
                                               {
-                                                  "id":  "abstract_006",
-                                                  "full":  "wallpapers/abstract/abstract_006.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_006.webp"
-                                              },
-                                              {
                                                   "id":  "abstract_007",
                                                   "full":  "wallpapers/abstract/abstract_007.webp",
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_007.webp"
@@ -453,16 +448,6 @@
                            "name":  "Cats",
                            "wallpapers":  [
                                               {
-                                                  "id":  "cats_001",
-                                                  "full":  "wallpapers/cats/cats_001.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_001.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_002",
-                                                  "full":  "wallpapers/cats/cats_002.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_002.webp"
-                                              },
-                                              {
                                                   "id":  "cats_003",
                                                   "full":  "wallpapers/cats/cats_003.webp",
                                                   "thumb":  "wallpapers/cats/thumbs/cats_003.webp"
@@ -637,6 +622,11 @@
                                                   "id":  "city_018",
                                                   "full":  "wallpapers/city/city_018.webp",
                                                   "thumb":  "wallpapers/city/thumbs/city_018.webp"
+                                              },
+                                              {
+                                                  "id":  "city_019",
+                                                  "full":  "wallpapers/city/city_019.webp",
+                                                  "thumb":  "wallpapers/city/thumbs/city_019.webp"
                                               }
                                           ]
                        },
@@ -868,6 +858,11 @@
                                                   "id":  "cute_073",
                                                   "full":  "wallpapers/cute/cute_073.webp",
                                                   "thumb":  "wallpapers/cute/thumbs/cute_073.webp"
+                                              },
+                                              {
+                                                  "id":  "cute_074",
+                                                  "full":  "wallpapers/cute/cute_074.webp",
+                                                  "thumb":  "wallpapers/cute/thumbs/cute_074.webp"
                                               }
                                           ]
                        },
@@ -1641,16 +1636,6 @@
                                                   "thumb":  "wallpapers/nature/thumbs/nature_019.webp"
                                               },
                                               {
-                                                  "id":  "nature_020",
-                                                  "full":  "wallpapers/nature/nature_020.webp",
-                                                  "thumb":  "wallpapers/nature/thumbs/nature_020.webp"
-                                              },
-                                              {
-                                                  "id":  "nature_021",
-                                                  "full":  "wallpapers/nature/nature_021.webp",
-                                                  "thumb":  "wallpapers/nature/thumbs/nature_021.webp"
-                                              },
-                                              {
                                                   "id":  "nature_022",
                                                   "full":  "wallpapers/nature/nature_022.webp",
                                                   "thumb":  "wallpapers/nature/thumbs/nature_022.webp"
@@ -1664,11 +1649,6 @@
                                                   "id":  "nature_024",
                                                   "full":  "wallpapers/nature/nature_024.webp",
                                                   "thumb":  "wallpapers/nature/thumbs/nature_024.webp"
-                                              },
-                                              {
-                                                  "id":  "nature_025",
-                                                  "full":  "wallpapers/nature/nature_025.webp",
-                                                  "thumb":  "wallpapers/nature/thumbs/nature_025.webp"
                                               },
                                               {
                                                   "id":  "nature_026",
@@ -1910,6 +1890,16 @@
                                                   "id":  "scenery_053",
                                                   "full":  "wallpapers/scenery/scenery_053.webp",
                                                   "thumb":  "wallpapers/scenery/thumbs/scenery_053.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_054",
+                                                  "full":  "wallpapers/scenery/scenery_054.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_054.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_055",
+                                                  "full":  "wallpapers/scenery/scenery_055.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_055.webp"
                                               }
                                           ]
                        },
@@ -1956,11 +1946,6 @@
                                                   "id":  "Sci-Fi_008",
                                                   "full":  "wallpapers/Sci-Fi/Sci-Fi_008.webp",
                                                   "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_008.webp"
-                                              },
-                                              {
-                                                  "id":  "Sci-Fi_009",
-                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_009.webp",
-                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_009.webp"
                                               },
                                               {
                                                   "id":  "Sci-Fi_010",

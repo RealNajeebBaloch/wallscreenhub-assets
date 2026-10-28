@@ -726,6 +726,10 @@ $unreadableSourceList = New-Object System.Collections.ArrayList
 $removedWallpaperCount = 0
 $removedOrphanThumbCount = 0
 
+# category id -> hash of the wallpaper chosen as that category's cover
+# (source file named "thumbnail.*" in the category folder).
+$coverHashByCategory = @{}
+
 
 # ============================================================
 # PROCESS EVERY SOURCE CATEGORY
@@ -766,6 +770,43 @@ foreach ($categoryFolder in $sourceCategories) {
         [void]$unreadableSourceList.Add("Folder could not be fully read: $($categoryFolder.FullName)")
 
         Add-Problem "Could not fully read source category '$categoryId' ($(@($listErrors).Count) error(s)). Removal of deleted wallpapers is disabled for this run."
+    }
+
+    # --------------------------------------------------------
+    # CATEGORY COVER
+    #
+    # A file named "thumbnail" (.webp/.png/.jpg/.jpeg) placed directly
+    # in the category folder is that category's cover: it is shown
+    # FIRST in the category (the preview image in the app).
+    # It is still published as a normal wallpaper under its own
+    # stable ID - nothing is renamed, so URLs and caches stay valid.
+    # --------------------------------------------------------
+
+    $coverFile = $null
+
+    $coverCandidates = @(
+        $sourceImages |
+            Where-Object {
+                $_.DirectoryName -ieq $categoryFolder.FullName -and
+                $_.BaseName -ieq "thumbnail"
+            }
+    )
+
+    if ($coverCandidates.Count -gt 0) {
+
+        $coverExtOrder = [string[]]@(".webp", ".png", ".jpg", ".jpeg")
+
+        $coverFile = @(
+            $coverCandidates |
+                Sort-Object { [array]::IndexOf($coverExtOrder, $_.Extension.ToLowerInvariant()) }
+        )[0]
+
+        Write-Host "Category cover file: $($coverFile.Name)"
+
+        if ($coverCandidates.Count -gt 1) {
+
+            Write-Warning "More than one 'thumbnail' file in '$categoryId'. Using $($coverFile.Name); the others are published as normal wallpapers."
+        }
     }
 
     $seenThisRun = @{}
@@ -832,6 +873,11 @@ foreach ($categoryFolder in $sourceCategories) {
             $sourceHash = Get-FileHashValue -Path $hashPath
 
             $sourceHashSet[$sourceHash] = $true
+
+            if ($coverFile -and $img.FullName -ieq $coverFile.FullName) {
+
+                $coverHashByCategory[$categoryId] = $sourceHash
+            }
 
             # ------------------------------------------------
             # Same content twice in the source tree.
@@ -1077,7 +1123,7 @@ else {
 
         # Never delete anything outside the wallpapers folder.
         if (-not $folderPath.StartsWith(
-                ($wallpapersRoot + ""),
+                ($wallpapersRoot + "\"),
                 [System.StringComparison]::OrdinalIgnoreCase)) {
 
             Add-Problem "Refused to remove folder outside the wallpapers directory: $folderPath"
@@ -1417,6 +1463,7 @@ Write-Host "Categories removed:       $prunedCategoryCount"
 Write-Host "Removed with category:    $prunedWallpaperCount"
 Write-Host "Removed (not in source):  $removedWallpaperCount"
 Write-Host "Orphan thumbs removed:    $removedOrphanThumbCount"
+Write-Host "Category covers applied:  $coversApplied"
 Write-Host "Problems / skipped:       $($problems.Count)"
 Write-Host "============================================================"
 Write-Host ""
@@ -1479,6 +1526,115 @@ if ($pruneEnabled) {
     elseif ($prunedCategoryCount -gt 0) {
 
         Write-Host "Manifest rebuilt without the $prunedCategoryCount removed categor$(if ($prunedCategoryCount -eq 1) { 'y' } else { 'ies' })."
+    }
+}
+
+
+# ============================================================
+# APPLY CATEGORY COVERS TO THE MANIFEST
+#
+# The manifest was just rebuilt from disk (sorted by ID). For every
+# category that has a "thumbnail" file in its source folder, that
+# wallpaper is moved to the FIRST position of the category. Only the
+# order changes: IDs, files and URLs stay exactly as they are.
+# Categories without a thumbnail file keep the normal order.
+# ============================================================
+
+$coversApplied = 0
+
+if ($coverHashByCategory.Count -gt 0) {
+
+    Write-Host ""
+    Write-Host "============================================================"
+    Write-Host "CATEGORY COVERS"
+    Write-Host "============================================================"
+    Write-Host ""
+
+    $manifestPath = "$repoRoot\manifest.json"
+
+    $coverManifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
+
+    function Get-ManifestSignature {
+        param($Manifest)
+
+        return (
+            @($Manifest.categories) | ForEach-Object {
+
+                "$($_.id)=" + ((@($_.wallpapers) | ForEach-Object { $_.id } | Sort-Object) -join ",")
+            }
+        ) -join ";"
+    }
+
+    $signatureBefore = Get-ManifestSignature $coverManifest
+    $orderChanged = $false
+
+    foreach ($cat in @($coverManifest.categories)) {
+
+        $catId = [string]$cat.id
+
+        if (-not $coverHashByCategory.ContainsKey($catId)) { continue }
+
+        $entry = $existingByHash[$coverHashByCategory[$catId]]
+
+        if (-not $entry -or $entry.category -ne $catId) {
+
+            Add-Problem "Cover for '$catId': the thumbnail file could not be published, so the normal order is kept."
+            continue
+        }
+
+        $list = @($cat.wallpapers)
+
+        $coverItem = $list | Where-Object { $_.id -eq $entry.id } | Select-Object -First 1
+
+        if (-not $coverItem) {
+
+            Add-Problem "Cover for '$catId': $($entry.id) is not in the manifest, so the normal order is kept."
+            continue
+        }
+
+        if ($list[0].id -ne $entry.id) {
+
+            $rest = @($list | Where-Object { $_.id -ne $entry.id })
+
+            $cat.wallpapers = @($coverItem) + $rest
+
+            $orderChanged = $true
+        }
+
+        Write-Host "Cover for '$catId': $($entry.id) (first in category)"
+
+        $coversApplied++
+    }
+
+    if ($orderChanged) {
+
+        $json = ConvertTo-Json -InputObject $coverManifest -Depth 10
+
+        # Never write a manifest that lost or gained a wallpaper.
+        $signatureAfter = Get-ManifestSignature ($json | ConvertFrom-Json)
+
+        if ($signatureAfter -ne $signatureBefore) {
+
+            Add-Problem "Cover step would have changed the manifest content, so it was NOT written. The normal order is kept."
+            $coversApplied = 0
+        }
+        else {
+
+            # Same format as before: UTF-8 without BOM, LF line endings.
+            $json = ($json -replace "`r`n", "`n") + "`n"
+
+            [System.IO.File]::WriteAllText(
+                $manifestPath,
+                $json,
+                (New-Object System.Text.UTF8Encoding($false))
+            )
+
+            Write-Host "Manifest updated with category covers."
+        }
+    }
+    else {
+
+        Write-Host "Manifest already has the covers first."
     }
 }
 
