@@ -698,6 +698,17 @@ $movedCount = 0
 $thumbnailCount = 0
 $duplicateSourceCount = 0
 
+# Every wallpaper that exists in the source (by WebP hash). Used after
+# processing to find repo wallpapers whose source file was deleted.
+$sourceHashSet = @{}
+
+# Source files/folders that could not be read or hashed this run. If any
+# exist the source list is incomplete, so removing wallpapers is unsafe.
+$unreadableSourceCount = 0
+
+$removedWallpaperCount = 0
+$removedOrphanThumbCount = 0
+
 
 # ============================================================
 # PROCESS EVERY SOURCE CATEGORY
@@ -725,11 +736,19 @@ foreach ($categoryFolder in $sourceCategories) {
         -Path $categoryFolder.FullName `
         -File `
         -Recurse `
-        -ErrorAction SilentlyContinue |
+        -ErrorAction SilentlyContinue `
+        -ErrorVariable listErrors |
         Where-Object {
             $allowedExtensions -contains $_.Extension.ToLowerInvariant()
         } |
         Sort-Object FullName
+
+    if (@($listErrors).Count -gt 0) {
+
+        $unreadableSourceCount++
+
+        Add-Problem "Could not fully read source category '$categoryId' ($(@($listErrors).Count) error(s)). Removal of deleted wallpapers is disabled for this run."
+    }
 
     $seenThisRun = @{}
 
@@ -750,6 +769,8 @@ foreach ($categoryFolder in $sourceCategories) {
             $format = Get-ImageFormat -Path $img.FullName
 
             if ($format -eq "unknown") {
+
+                $unreadableSourceCount++
 
                 Add-Problem "Unsupported or damaged source (not WebP/JPEG/PNG): $($img.FullName)"
                 continue
@@ -790,6 +811,8 @@ foreach ($categoryFolder in $sourceCategories) {
             }
 
             $sourceHash = Get-FileHashValue -Path $hashPath
+
+            $sourceHashSet[$sourceHash] = $true
 
             # ------------------------------------------------
             # Same content twice in the source tree.
@@ -989,6 +1012,8 @@ foreach ($categoryFolder in $sourceCategories) {
         }
         catch {
 
+            $unreadableSourceCount++
+
             Add-Problem "FAILED processing $($img.FullName): $($_.Exception.Message)"
         }
         finally {
@@ -1063,6 +1088,115 @@ else {
         catch {
 
             Add-Problem "Could not remove category folder $folderPath : $($_.Exception.Message)"
+        }
+    }
+}
+
+
+# ============================================================
+# REMOVE WALLPAPERS DELETED FROM THE SOURCE
+#
+# Every source image was hashed above ($sourceHashSet). A wallpaper
+# in the repo whose hash is NOT in that set no longer exists in the
+# source (deleted, or replaced by a different image), so it is
+# removed together with its thumbnail. Git then records the deletion,
+# the CDN purge covers it, and the manifest is rebuilt from disk.
+#
+# Safety nets (a wrong or partly unreadable source must never wipe
+# the repo):
+#   - skipped if any source file/folder could not be read or hashed
+#   - skipped if no source image was found at all
+#   - skipped if it would remove 5+ wallpapers AND more than half of
+#     all published ones, unless -ForcePrune is given
+#   - skipped entirely with -NoPrune
+# ============================================================
+
+Write-Host ""
+Write-Host "============================================================"
+Write-Host "REMOVING WALLPAPERS DELETED FROM SOURCE"
+Write-Host "============================================================"
+Write-Host ""
+
+if ($NoPrune) {
+
+    Write-Host "-NoPrune given: skipped."
+}
+elseif ($unreadableSourceCount -gt 0) {
+
+    Add-Problem "SAFETY STOP: $unreadableSourceCount source file/folder problem(s) this run, so the source list is incomplete. No wallpapers were removed. Fix the source files and run again."
+}
+elseif ($sourceHashSet.Count -eq 0) {
+
+    Add-Problem "SAFETY STOP: no readable source images were found, so no wallpapers were removed."
+}
+else {
+
+    $liveEntries = @(
+        $existingByHash.GetEnumerator() |
+            Where-Object { Test-Path -LiteralPath $_.Value.full }
+    )
+
+    $staleWallpapers = @(
+        $liveEntries |
+            Where-Object { -not $sourceHashSet.ContainsKey($_.Key) } |
+            Sort-Object { $_.Value.id }
+    )
+
+    if ($staleWallpapers.Count -eq 0) {
+
+        Write-Host "None. Every published wallpaper still exists in the source."
+    }
+    elseif (
+        $staleWallpapers.Count -ge 5 -and
+        ($staleWallpapers.Count * 2) -gt $liveEntries.Count -and
+        -not $ForcePrune
+    ) {
+
+        Add-Problem "SAFETY STOP: $($staleWallpapers.Count) of $($liveEntries.Count) published wallpapers are missing from the source. That is more than half, so nothing was removed. If this is intentional, run again with -ForcePrune."
+    }
+    else {
+
+        foreach ($entry in $staleWallpapers) {
+
+            $info = $entry.Value
+
+            Remove-IfExists $info.full
+            Remove-IfExists $info.thumb
+
+            if (Test-Path -LiteralPath $info.full) {
+
+                Add-Problem "Could not remove wallpaper no longer in source: $($info.full)"
+                continue
+            }
+
+            Write-Host "Removed (not in source): $($info.id)"
+
+            $removedWallpaperCount++
+        }
+
+        Write-Host ""
+        Write-Host "Wallpapers removed: $removedWallpaperCount"
+    }
+
+    # Thumbnails whose full image no longer exists are orphans.
+    foreach ($categoryFolder in @(Get-ChildItem -Path $wallpapersRoot -Directory -ErrorAction SilentlyContinue)) {
+
+        $thumbDir = Join-Path $categoryFolder.FullName "thumbs"
+
+        if (-not (Test-Path -LiteralPath $thumbDir)) { continue }
+
+        foreach ($thumb in @(Get-ChildItem -Path $thumbDir -Filter "*.webp" -File -ErrorAction SilentlyContinue)) {
+
+            $fullPath = Join-Path $categoryFolder.FullName $thumb.Name
+
+            if (-not (Test-Path -LiteralPath $fullPath)) {
+
+                Remove-IfExists $thumb.FullName
+
+                Write-Host "Removed orphan thumbnail: $($categoryFolder.Name)/thumbs/$($thumb.Name)"
+
+                $removedOrphanThumbCount++
+            }
         }
     }
 }
@@ -1153,7 +1287,9 @@ Write-Host "Thumbnails created:       $thumbnailCount"
 Write-Host "Repaired (fake WebP):     $repairedCount"
 Write-Host "Duplicate source images:  $duplicateSourceCount"
 Write-Host "Categories removed:       $prunedCategoryCount"
-Write-Host "Wallpapers removed:       $prunedWallpaperCount"
+Write-Host "Removed with category:    $prunedWallpaperCount"
+Write-Host "Removed (not in source):  $removedWallpaperCount"
+Write-Host "Orphan thumbs removed:    $removedOrphanThumbCount"
 Write-Host "Problems / skipped:       $($problems.Count)"
 Write-Host "============================================================"
 Write-Host ""

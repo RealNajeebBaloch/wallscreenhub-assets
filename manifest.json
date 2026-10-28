@@ -6,11 +6,6 @@
                            "name":  "Abstract",
                            "wallpapers":  [
                                               {
-                                                  "id":  "abstract_001",
-                                                  "full":  "wallpapers/abstract/abstract_001.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_001.webp"
-                                              },
-                                              {
                                                   "id":  "abstract_002",
                                                   "full":  "wallpapers/abstract/abstract_002.webp",
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_002.webp"
@@ -41,26 +36,6 @@
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_007.webp"
                                               },
                                               {
-                                                  "id":  "abstract_008",
-                                                  "full":  "wallpapers/abstract/abstract_008.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_008.webp"
-                                              },
-                                              {
-                                                  "id":  "abstract_009",
-                                                  "full":  "wallpapers/abstract/abstract_009.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_009.webp"
-                                              },
-                                              {
-                                                  "id":  "abstract_010",
-                                                  "full":  "wallpapers/abstract/abstract_010.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_010.webp"
-                                              },
-                                              {
-                                                  "id":  "abstract_011",
-                                                  "full":  "wallpapers/abstract/abstract_011.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_011.webp"
-                                              },
-                                              {
                                                   "id":  "abstract_012",
                                                   "full":  "wallpapers/abstract/abstract_012.webp",
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_012.webp"
@@ -69,11 +44,6 @@
                                                   "id":  "abstract_013",
                                                   "full":  "wallpapers/abstract/abstract_013.webp",
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_013.webp"
-                                              },
-                                              {
-                                                  "id":  "abstract_014",
-                                                  "full":  "wallpapers/abstract/abstract_014.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_014.webp"
                                               },
                                               {
                                                   "id":  "abstract_016",
@@ -1534,61 +1504,6 @@
                            "name":  "Illustrated",
                            "wallpapers":  [
                                               {
-                                                  "id":  "illustrated_001",
-                                                  "full":  "wallpapers/illustrated/illustrated_001.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_001.webp"
-                                              },
-                                              {
-                                                  "id":  "illustrated_002",
-                                                  "full":  "wallpapers/illustrated/illustrated_002.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_002.webp"
-                                              },
-                                              {
-                                                  "id":  "illustrated_004",
-                                                  "full":  "wallpapers/illustrated/illustrated_004.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_004.webp"
-                                              },
-                                              {
-                                                  "id":  "illustrated_006",
-                                                  "full":  "wallpapers/illustrated/illustrated_006.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_006.webp"
-                                              },
-                                              {
-                                                  "id":  "illustrated_007",
-                                                  "full":  "wallpapers/illustrated/illustrated_007.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_007.webp"
-                                              },
-                                              {
-                                                  "id":  "illustrated_009",
-                                                  "full":  "wallpapers/illustrated/illustrated_009.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_009.webp"
-                                              },
-                                              {
-                                                  "id":  "illustrated_012",
-                                                  "full":  "wallpapers/illustrated/illustrated_012.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_012.webp"
-                                              },
-                                              {
-                                                  "id":  "illustrated_013",
-                                                  "full":  "wallpapers/illustrated/illustrated_013.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_013.webp"
-                                              },
-                                              {
-                                                  "id":  "illustrated_014",
-                                                  "full":  "wallpapers/illustrated/illustrated_014.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_014.webp"
-                                              },
-                                              {
-                                                  "id":  "illustrated_015",
-                                                  "full":  "wallpapers/illustrated/illustrated_015.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_015.webp"
-                                              },
-                                              {
-                                                  "id":  "illustrated_016",
-                                                  "full":  "wallpapers/illustrated/illustrated_016.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_016.webp"
-                                              },
-                                              {
                                                   "id":  "illustrated_022",
                                                   "full":  "wallpapers/illustrated/illustrated_022.webp",
                                                   "thumb":  "wallpapers/illustrated/thumbs/illustrated_022.webp"
@@ -1634,11 +1549,6 @@
                            "id":  "minimal",
                            "name":  "Minimal",
                            "wallpapers":  [
-                                              {
-                                                  "id":  "minimal_001",
-                                                  "full":  "wallpapers/minimal/minimal_001.webp",
-                                                  "thumb":  "wallpapers/minimal/thumbs/minimal_001.webp"
-                                              },
                                               {
                                                   "id":  "minimal_002",
                                                   "full":  "wallpapers/minimal/minimal_002.webp",
@@ -1715,11 +1625,6 @@
                            "id":  "nature",
                            "name":  "Nature",
                            "wallpapers":  [
-                                              {
-                                                  "id":  "nature_001",
-                                                  "full":  "wallpapers/nature/nature_001.webp",
-                                                  "thumb":  "wallpapers/nature/thumbs/nature_001.webp"
-                                              },
                                               {
                                                   "id":  "nature_003",
                                                   "full":  "wallpapers/nature/nature_003.webp",
@@ -1980,36 +1885,6 @@
                                                   "id":  "scenery_020",
                                                   "full":  "wallpapers/scenery/scenery_020.webp",
                                                   "thumb":  "wallpapers/scenery/thumbs/scenery_020.webp"
-                                              },
-                                              {
-                                                  "id":  "scenery_021",
-                                                  "full":  "wallpapers/scenery/scenery_021.webp",
-                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_021.webp"
-                                              },
-                                              {
-                                                  "id":  "scenery_022",
-                                                  "full":  "wallpapers/scenery/scenery_022.webp",
-                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_022.webp"
-                                              },
-                                              {
-                                                  "id":  "scenery_023",
-                                                  "full":  "wallpapers/scenery/scenery_023.webp",
-                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_023.webp"
-                                              },
-                                              {
-                                                  "id":  "scenery_024",
-                                                  "full":  "wallpapers/scenery/scenery_024.webp",
-                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_024.webp"
-                                              },
-                                              {
-                                                  "id":  "scenery_026",
-                                                  "full":  "wallpapers/scenery/scenery_026.webp",
-                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_026.webp"
-                                              },
-                                              {
-                                                  "id":  "scenery_027",
-                                                  "full":  "wallpapers/scenery/scenery_027.webp",
-                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_027.webp"
                                               },
                                               {
                                                   "id":  "scenery_030",
