@@ -3,7 +3,14 @@ param(
     [switch]$NoPush,
 
     # Verify EVERY wallpaper on the CDN, not just the ones changed this run.
-    [switch]$VerifyAll
+    [switch]$VerifyAll,
+
+    # Do NOT remove repo categories whose source folder was deleted.
+    [switch]$NoPrune,
+
+    # Allow removing MORE than half of the repo categories in one run
+    # (normally blocked as a safety net against a wrong/partial source drive).
+    [switch]$ForcePrune
 )
 
 $ErrorActionPreference = "Stop"
@@ -384,6 +391,92 @@ Write-Host ""
 
 
 # ============================================================
+# DETECT CATEGORIES DELETED FROM THE SOURCE
+#
+# The source folders are the master list of categories. A
+# category folder in the repo with no matching folder in
+# $sourceRoot was deleted on purpose, so it is removed from the
+# repo too (images + thumbnails). The manifest is rebuilt from
+# disk afterwards, so it drops that category automatically.
+#
+# Detection happens here, but the actual deletion happens AFTER
+# the source categories are processed. That way images you moved
+# or renamed into another source folder are MOVED (as always)
+# instead of being deleted and converted again.
+# ============================================================
+
+$sourceCategoryNames = @{}
+
+foreach ($folder in $sourceCategories) {
+    $sourceCategoryNames[$folder.Name] = $true
+}
+
+$repoCategoriesNow = @(
+    Get-ChildItem `
+        -Path $wallpapersRoot `
+        -Directory `
+        -ErrorAction SilentlyContinue
+)
+
+$staleCategoryFolders = @(
+    $repoCategoriesNow |
+        Where-Object { -not $sourceCategoryNames.ContainsKey($_.Name) }
+)
+
+$pruneEnabled = $false
+$stalePruneLookup = @{}
+$prunedCategoryCount = 0
+$prunedWallpaperCount = 0
+
+Write-Host "============================================================"
+Write-Host "CATEGORIES DELETED FROM SOURCE"
+Write-Host "============================================================"
+Write-Host ""
+
+if ($staleCategoryFolders.Count -eq 0) {
+
+    Write-Host "None. Repo categories match the source folders."
+}
+elseif ($NoPrune) {
+
+    Write-Warning "-NoPrune given: $($staleCategoryFolders.Count) repo categories have no source folder but will be KEPT: $(($staleCategoryFolders | ForEach-Object { $_.Name }) -join ', ')"
+}
+elseif ($sourceCategoryNames.Count -eq 0) {
+
+    Add-Problem "SAFETY STOP: no category folders were found in $sourceRoot, so nothing was removed from the repo (is the drive/folder empty or unavailable?)."
+}
+elseif (
+    $staleCategoryFolders.Count -ge 2 -and
+    ($staleCategoryFolders.Count * 2) -gt $repoCategoriesNow.Count -and
+    -not $ForcePrune
+) {
+
+    Add-Problem "SAFETY STOP: $($staleCategoryFolders.Count) of $($repoCategoriesNow.Count) repo categories have no source folder ($(($staleCategoryFolders | ForEach-Object { $_.Name }) -join ', ')). That is more than half, so nothing was removed. If this is intentional, run again with -ForcePrune."
+}
+else {
+
+    $pruneEnabled = $true
+
+    foreach ($stale in $staleCategoryFolders) {
+
+        $staleCount = @(
+            Get-ChildItem `
+                -LiteralPath $stale.FullName `
+                -Filter "*.webp" `
+                -File `
+                -ErrorAction SilentlyContinue
+        ).Count
+
+        Write-Host "Will remove category '$($stale.Name)' ($staleCount wallpapers) - its source folder no longer exists."
+
+        $stalePruneLookup[$stale.Name] = $true
+    }
+}
+
+Write-Host ""
+
+
+# ============================================================
 # REPAIR EXISTING REPOSITORY FILES
 #
 # Earlier runs copied ".webp" sources byte-for-byte. If such a
@@ -408,7 +501,8 @@ $repairedCount = 0
 $repoCategoryFolders = Get-ChildItem `
     -Path $wallpapersRoot `
     -Directory `
-    -ErrorAction SilentlyContinue
+    -ErrorAction SilentlyContinue |
+    Where-Object { -not $stalePruneLookup.ContainsKey($_.Name) }
 
 foreach ($categoryFolder in $repoCategoryFolders) {
 
@@ -907,6 +1001,74 @@ foreach ($categoryFolder in $sourceCategories) {
 
 
 # ============================================================
+# REMOVE CATEGORIES DELETED FROM THE SOURCE
+#
+# Runs after all source categories were processed, so anything
+# that was moved out of a deleted category is already safe in its
+# new category. Whatever is left in the folder is removed
+# (full images + thumbs). Git sees these as deletions, and the
+# publish step purges them from the CDN.
+# ============================================================
+
+Write-Host ""
+Write-Host "============================================================"
+Write-Host "REMOVING CATEGORIES DELETED FROM SOURCE"
+Write-Host "============================================================"
+Write-Host ""
+
+if (-not $pruneEnabled) {
+
+    Write-Host "Nothing to remove."
+}
+else {
+
+    foreach ($stale in $staleCategoryFolders) {
+
+        $folderPath = $stale.FullName
+
+        if (-not (Test-Path -LiteralPath $folderPath)) {
+            continue
+        }
+
+        # Never delete anything outside the wallpapers folder.
+        if (-not $folderPath.StartsWith(
+                ($wallpapersRoot + ""),
+                [System.StringComparison]::OrdinalIgnoreCase)) {
+
+            Add-Problem "Refused to remove folder outside the wallpapers directory: $folderPath"
+            continue
+        }
+
+        $leftCount = @(
+            Get-ChildItem `
+                -LiteralPath $folderPath `
+                -Filter "*.webp" `
+                -File `
+                -ErrorAction SilentlyContinue
+        ).Count
+
+        try {
+
+            Remove-Item `
+                -LiteralPath $folderPath `
+                -Recurse `
+                -Force `
+                -ErrorAction Stop
+
+            Write-Host "Removed category '$($stale.Name)' ($leftCount wallpapers + thumbnails)."
+
+            $prunedCategoryCount++
+            $prunedWallpaperCount += $leftCount
+        }
+        catch {
+
+            Add-Problem "Could not remove category folder $folderPath : $($_.Exception.Message)"
+        }
+    }
+}
+
+
+# ============================================================
 # VERIFY: EVERY PUBLISHED WALLPAPER MUST HAVE A THUMBNAIL
 #
 # Covers existing wallpapers whose thumbnail is missing (or
@@ -990,6 +1152,8 @@ Write-Host "Moved categories:         $movedCount"
 Write-Host "Thumbnails created:       $thumbnailCount"
 Write-Host "Repaired (fake WebP):     $repairedCount"
 Write-Host "Duplicate source images:  $duplicateSourceCount"
+Write-Host "Categories removed:       $prunedCategoryCount"
+Write-Host "Wallpapers removed:       $prunedWallpaperCount"
 Write-Host "Problems / skipped:       $($problems.Count)"
 Write-Host "============================================================"
 Write-Host ""
@@ -1028,6 +1192,31 @@ $global:LASTEXITCODE = 0
 if ($LASTEXITCODE -ne 0) {
 
     throw "rebuild-manifest.ps1 failed."
+}
+
+# Safety net: the manifest must not list a category that no longer
+# has a source folder (only checked when removal was active).
+if ($pruneEnabled) {
+
+    $builtManifest = Get-Content `
+        -LiteralPath "$repoRoot\manifest.json" `
+        -Raw |
+        ConvertFrom-Json
+
+    $staleInManifest = @(
+        @($builtManifest.categories) |
+            Where-Object { -not $sourceCategoryNames.ContainsKey([string]$_.id) } |
+            ForEach-Object { $_.id }
+    )
+
+    if ($staleInManifest.Count -gt 0) {
+
+        Add-Problem "manifest.json still lists categories that have no source folder: $($staleInManifest -join ', '). rebuild-manifest.ps1 may be keeping its own category list."
+    }
+    elseif ($prunedCategoryCount -gt 0) {
+
+        Write-Host "Manifest rebuilt without the $prunedCategoryCount removed categor$(if ($prunedCategoryCount -eq 1) { 'y' } else { 'ies' })."
+    }
 }
 
 
@@ -1263,6 +1452,15 @@ else {
                 if ($cdnCount -ne $localCounts[$id]) {
 
                     $lastMismatch += "$id (local $($localCounts[$id]), CDN $cdnCount)"
+                }
+            }
+
+            # Categories removed locally must disappear from the CDN manifest too.
+            foreach ($cdnCat in @($cdnManifest.categories)) {
+
+                if (-not $localCounts.ContainsKey([string]$cdnCat.id)) {
+
+                    $lastMismatch += "$($cdnCat.id) (removed locally, CDN still lists $(@($cdnCat.wallpapers).Count))"
                 }
             }
 

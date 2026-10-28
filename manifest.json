@@ -489,52 +489,6 @@
                                           ]
                        },
                        {
-                           "id":  "cars",
-                           "name":  "Cars",
-                           "wallpapers":  [
-                                              {
-                                                  "id":  "cars_001",
-                                                  "full":  "wallpapers/cars/cars_001.webp",
-                                                  "thumb":  "wallpapers/cars/thumbs/cars_001.webp"
-                                              },
-                                              {
-                                                  "id":  "cars_010",
-                                                  "full":  "wallpapers/cars/cars_010.webp",
-                                                  "thumb":  "wallpapers/cars/thumbs/cars_010.webp"
-                                              },
-                                              {
-                                                  "id":  "cars_011",
-                                                  "full":  "wallpapers/cars/cars_011.webp",
-                                                  "thumb":  "wallpapers/cars/thumbs/cars_011.webp"
-                                              },
-                                              {
-                                                  "id":  "cars_012",
-                                                  "full":  "wallpapers/cars/cars_012.webp",
-                                                  "thumb":  "wallpapers/cars/thumbs/cars_012.webp"
-                                              },
-                                              {
-                                                  "id":  "cars_013",
-                                                  "full":  "wallpapers/cars/cars_013.webp",
-                                                  "thumb":  "wallpapers/cars/thumbs/cars_013.webp"
-                                              },
-                                              {
-                                                  "id":  "cars_014",
-                                                  "full":  "wallpapers/cars/cars_014.webp",
-                                                  "thumb":  "wallpapers/cars/thumbs/cars_014.webp"
-                                              },
-                                              {
-                                                  "id":  "cars_015",
-                                                  "full":  "wallpapers/cars/cars_015.webp",
-                                                  "thumb":  "wallpapers/cars/thumbs/cars_015.webp"
-                                              },
-                                              {
-                                                  "id":  "cars_016",
-                                                  "full":  "wallpapers/cars/cars_016.webp",
-                                                  "thumb":  "wallpapers/cars/thumbs/cars_016.webp"
-                                              }
-                                          ]
-                       },
-                       {
                            "id":  "cats",
                            "name":  "Cats",
                            "wallpapers":  [
