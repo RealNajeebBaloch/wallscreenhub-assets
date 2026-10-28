@@ -53,6 +53,22 @@ $allowedExtensions = @(
 # printed at the end. One bad file never stops the run.
 $problems = New-Object System.Collections.ArrayList
 
+# Repo-relative paths (a/b/c.webp) of every file deleted from the repo.
+# Deleted files stay served by the jsDelivr cache until they are purged,
+# so they are remembered in a pending list (outside the git repo) and
+# purged on every run until the CDN really returns 404 for them.
+$pendingPurgeFile = Join-Path $sourceRoot ".pending-cdn-purge.txt"
+$removedRepoPaths = New-Object System.Collections.ArrayList
+
+function Add-RemovedPath {
+    param([string]$FullPath)
+
+    if ($FullPath.StartsWith(($repoRoot + "\"), [System.StringComparison]::OrdinalIgnoreCase)) {
+
+        [void]$removedRepoPaths.Add($FullPath.Substring($repoRoot.Length + 1).Replace("\", "/"))
+    }
+}
+
 
 # ============================================================
 # VALIDATION
@@ -1076,6 +1092,11 @@ else {
                 -ErrorAction SilentlyContinue
         ).Count
 
+        $filesInFolder = @(
+            Get-ChildItem -LiteralPath $folderPath -Recurse -File -ErrorAction SilentlyContinue |
+                ForEach-Object { $_.FullName }
+        )
+
         try {
 
             Remove-Item `
@@ -1085,6 +1106,8 @@ else {
                 -ErrorAction Stop
 
             Write-Host "Removed category '$($stale.Name)' ($leftCount wallpapers + thumbnails)."
+
+            foreach ($removedFile in $filesInFolder) { Add-RemovedPath $removedFile }
 
             $prunedCategoryCount++
             $prunedWallpaperCount += $leftCount
@@ -1234,6 +1257,9 @@ else {
 
             Write-Host "Removed $($info.Category)/$($info.Id)  ($($entry.Reason))"
 
+            Add-RemovedPath $info.Full
+            Add-RemovedPath $info.Thumb
+
             $removedWallpaperCount++
         }
 
@@ -1265,6 +1291,8 @@ else {
 
                     Write-Host "Removed orphan thumbnail: $($categoryFolder.Name)/thumbs/$($thumb.Name)"
 
+                    Add-RemovedPath $thumb.FullName
+
                     $removedOrphanThumbCount++
                 }
             }
@@ -1287,6 +1315,8 @@ else {
                     Remove-IfExists $other.FullName
 
                     Write-Host "Removed stray image file: $($categoryFolder.Name)/$($other.Name)"
+
+                    Add-RemovedPath $other.FullName
 
                     $removedOrphanThumbCount++
                 }
@@ -1454,6 +1484,48 @@ if ($pruneEnabled) {
 
 
 # ============================================================
+# REMEMBER DELETED FILES UNTIL THE CDN HAS FORGOTTEN THEM
+# ============================================================
+
+$pendingPurge = New-Object System.Collections.ArrayList
+$pendingSeen = @{}
+
+if (Test-Path -LiteralPath $pendingPurgeFile) {
+
+    foreach ($line in @(Get-Content -LiteralPath $pendingPurgeFile)) {
+
+        $line = ([string]$line).Trim()
+
+        if ($line -ne "" -and -not $pendingSeen.ContainsKey($line)) {
+
+            $pendingSeen[$line] = $true
+            [void]$pendingPurge.Add($line)
+        }
+    }
+}
+
+foreach ($line in $removedRepoPaths) {
+
+    if (-not $pendingSeen.ContainsKey($line)) {
+
+        $pendingSeen[$line] = $true
+        [void]$pendingPurge.Add($line)
+    }
+}
+
+if ($removedRepoPaths.Count -gt 0) {
+
+    Set-Content -LiteralPath $pendingPurgeFile -Value @($pendingPurge) -Encoding UTF8
+}
+
+if ($pendingPurge.Count -gt 0) {
+
+    Write-Host ""
+    Write-Host "Deleted files waiting for CDN purge: $($pendingPurge.Count)"
+}
+
+
+# ============================================================
 # PUBLISH: GIT PUSH -> CDN PURGE -> CDN VERIFY
 # ============================================================
 
@@ -1466,6 +1538,7 @@ function Invoke-Git {
 $cdnManifestOk = $null
 $cdnImagesChecked = 0
 $cdnImagesMissing = @()
+$removedStillServed = 0
 
 if ($NoPush) {
 
@@ -1608,14 +1681,37 @@ else {
     Write-Host "============================================================"
     Write-Host ""
 
-    $purgeList = @($purgePaths | Select-Object -First 100)
+    # Everything changed in this commit + every deleted file that the
+    # CDN may still be serving (pending list), each purged once.
+    $purgeSet = @{}
+    $purgedSet = @{}
+    $purgeOrder = New-Object System.Collections.ArrayList
 
-    if ($purgePaths.Count -gt 100) {
+    foreach ($candidate in (@($purgePaths) + @($pendingPurge))) {
 
-        Write-Warning "$($purgePaths.Count) files need purging; only the first 100 are purged (purge limits). The rest expire from the cache on their own."
+        if ([string]::IsNullOrWhiteSpace($candidate)) { continue }
+
+        if (-not $purgeSet.ContainsKey($candidate)) {
+
+            $purgeSet[$candidate] = $true
+            [void]$purgeOrder.Add($candidate)
+        }
     }
 
-    foreach ($purgePath in $purgeList) {
+    Write-Host "Files to purge: $($purgeOrder.Count)"
+
+    $purgeCounter = 0
+    $consecutiveFailures = 0
+
+    foreach ($purgePath in $purgeOrder) {
+
+        if ($consecutiveFailures -ge 5) {
+
+            Write-Warning "Purge failed 5 times in a row (rate limit?). Stopped. The rest stays in the pending list and is purged on the next run."
+            break
+        }
+
+        $purgeCounter++
 
         try {
 
@@ -1624,12 +1720,22 @@ else {
                 -UseBasicParsing |
                 Out-Null
 
-            Write-Host "Purged: $purgePath"
+            $purgedSet[$purgePath] = $true
+            $consecutiveFailures = 0
+
+            if ($purgeOrder.Count -le 40 -or ($purgeCounter % 25) -eq 0) {
+
+                Write-Host "Purged ($purgeCounter/$($purgeOrder.Count)): $purgePath"
+            }
         }
         catch {
 
+            $consecutiveFailures++
+
             Write-Warning "Purge failed for $purgePath : $($_.Exception.Message)"
         }
+
+        Start-Sleep -Milliseconds 150
     }
 
 
@@ -1785,6 +1891,117 @@ else {
 
         Write-Host "All checked images are being served."
     }
+
+
+    # --------------------------------------------------------
+    # 5) CHECK DELETED FILES ARE REALLY GONE FROM THE CDN
+    #
+    # A deleted wallpaper/thumbnail keeps being served from the CDN
+    # cache until it is purged. Anything still served is kept in the
+    # pending list and purged again on the next run.
+    # --------------------------------------------------------
+
+    Write-Host ""
+    Write-Host "============================================================"
+    Write-Host "CHECKING DELETED FILES ON CDN"
+    Write-Host "============================================================"
+    Write-Host ""
+
+    $stillPending = New-Object System.Collections.ArrayList
+
+    # Not purged this run (purge stopped early): stays pending.
+    foreach ($path in $pendingPurge) {
+
+        if (-not $purgedSet.ContainsKey($path)) {
+            [void]$stillPending.Add($path)
+        }
+    }
+
+    # Purged and not present locally: the CDN must now answer 404.
+    $unconfirmed = @(
+        $pendingPurge |
+            Where-Object {
+                $purgedSet.ContainsKey($_) -and
+                -not (Test-Path -LiteralPath (Join-Path $repoRoot ($_ -replace '/', '\')))
+            }
+    )
+
+    $toCheckCount = $unconfirmed.Count
+
+    for ($attempt = 1; $attempt -le 3 -and $unconfirmed.Count -gt 0; $attempt++) {
+
+        $next = @()
+
+        foreach ($path in $unconfirmed) {
+
+            $code = 0
+
+            try {
+
+                $r = Invoke-WebRequest `
+                    -Uri "$cdnBase/$path" `
+                    -Method Head `
+                    -UseBasicParsing `
+                    -Headers @{ "Cache-Control" = "no-cache" }
+
+                $code = [int]$r.StatusCode
+            }
+            catch {
+
+                if ($_.Exception.Response) {
+                    $code = [int]$_.Exception.Response.StatusCode
+                }
+            }
+
+            if ($code -ne 404) {
+                $next += $path
+            }
+        }
+
+        $unconfirmed = @($next)
+
+        if ($unconfirmed.Count -gt 0 -and $attempt -lt 3) {
+
+            Write-Host "Attempt $attempt/3: $($unconfirmed.Count) deleted file(s) still served by the CDN, purging again..."
+
+            foreach ($path in $unconfirmed) {
+
+                try {
+                    Invoke-WebRequest -Uri "$purgeBase/$path" -UseBasicParsing | Out-Null
+                }
+                catch { }
+
+                Start-Sleep -Milliseconds 150
+            }
+
+            Start-Sleep -Seconds 10
+        }
+    }
+
+    foreach ($path in $unconfirmed) { [void]$stillPending.Add($path) }
+
+    $removedStillServed = $unconfirmed.Count
+
+    Write-Host "Deleted files checked: $toCheckCount"
+    Write-Host "Confirmed gone from CDN: $($toCheckCount - $removedStillServed)"
+
+    if ($removedStillServed -gt 0) {
+
+        Write-Warning "$removedStillServed deleted file(s) are still served by the CDN cache. They stay in the pending list and are purged again next run."
+
+        foreach ($path in ($unconfirmed | Select-Object -First 10)) {
+            Write-Host " - $cdnBase/$path" -ForegroundColor Yellow
+        }
+    }
+
+    if ($stillPending.Count -gt 0) {
+
+        Set-Content -LiteralPath $pendingPurgeFile -Value @($stillPending) -Encoding UTF8
+    }
+    elseif (Test-Path -LiteralPath $pendingPurgeFile) {
+
+        Remove-Item -LiteralPath $pendingPurgeFile -Force
+    }
 }
 
 
@@ -1809,6 +2026,12 @@ elseif ($cdnManifestOk -and $cdnImagesMissing.Count -eq 0) {
 else {
 
     Write-Host "Published to GitHub, but the CDN is not fully caught up yet (see warnings above)."
+}
+
+if (-not $NoPush -and $removedStillServed -gt 0) {
+
+    Write-Host ""
+    Write-Host "$removedStillServed deleted wallpaper file(s) are still cached by the CDN. Run this script again in a few minutes (safe)."
 }
 
 if ($problems.Count -gt 0) {
