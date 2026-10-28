@@ -1,3 +1,11 @@
+param(
+    # Skip git push, CDN purge and CDN verification.
+    [switch]$NoPush,
+
+    # Verify EVERY wallpaper on the CDN, not just the ones changed this run.
+    [switch]$VerifyAll
+)
+
 $ErrorActionPreference = "Stop"
 
 $libwebpBin = "$env:USERPROFILE\libwebp\libwebp-1.4.0-windows-x64\bin"
@@ -9,6 +17,14 @@ $repoRoot = "E:\wallscreenhub-assets"
 
 # Broken files are moved here (OUTSIDE the git repo) instead of being published.
 $quarantineRoot = "E:\wallscreenhub-quarantine"
+
+# GitHub / jsDelivr publishing
+$githubUser = "RealNajeebBaloch"
+$githubRepo = "wallscreenhub-assets"
+$gitBranch  = "main"
+
+$cdnBase   = "https://cdn.jsdelivr.net/gh/$githubUser/$githubRepo@$gitBranch"
+$purgeBase = "https://purge.jsdelivr.net/gh/$githubUser/$githubRepo@$gitBranch"
 
 $wallpapersRoot = "$repoRoot\wallpapers"
 
@@ -1014,7 +1030,358 @@ if ($LASTEXITCODE -ne 0) {
     throw "rebuild-manifest.ps1 failed."
 }
 
+
+# ============================================================
+# PUBLISH: GIT PUSH -> CDN PURGE -> CDN VERIFY
+# ============================================================
+
+function Invoke-Git {
+    param([string[]]$GitArguments)
+
+    return Invoke-Tool -Exe "git" -Arguments (@("-C", $repoRoot) + $GitArguments)
+}
+
+$cdnManifestOk = $null
+$cdnImagesChecked = 0
+$cdnImagesMissing = @()
+
+if ($NoPush) {
+
+    Write-Host ""
+    Write-Host "-NoPush given: skipping git push, CDN purge and CDN verification."
+}
+else {
+
+    # --------------------------------------------------------
+    # 1) COMMIT + PUSH
+    # --------------------------------------------------------
+
+    Write-Host ""
+    Write-Host "============================================================"
+    Write-Host "PUBLISHING TO GITHUB"
+    Write-Host "============================================================"
+    Write-Host ""
+
+    $purgePaths = New-Object System.Collections.ArrayList
+    $verifyPaths = New-Object System.Collections.ArrayList
+
+    # The manifest is an existing file, so its old copy is what the
+    # CDN caches. It is always purged.
+    [void]$purgePaths.Add("manifest.json")
+
+    $committed = $false
+
+    $status = Invoke-Git @("status", "--porcelain")
+
+    if ($status.ExitCode -ne 0) {
+        throw "git status failed: $($status.Output.Trim())"
+    }
+
+    if (-not [string]::IsNullOrWhiteSpace($status.Output)) {
+
+        $result = Invoke-Git @("add", "-A")
+
+        if ($result.ExitCode -ne 0) {
+            throw "git add failed: $($result.Output.Trim())"
+        }
+
+        $message = "Update wallpapers ({0})" -f (Get-Date -Format "yyyy-MM-dd HH:mm")
+
+        $result = Invoke-Git @("commit", "-m", $message)
+
+        if ($result.ExitCode -ne 0) {
+            throw "git commit failed: $($result.Output.Trim())"
+        }
+
+        Write-Host "Committed: $message"
+
+        $committed = $true
+    }
+    else {
+
+        Write-Host "No new changes to commit."
+    }
+
+    # Push even when nothing was committed: a previous manual commit
+    # may not have been pushed yet. If it is already up to date this
+    # does nothing.
+    $result = Invoke-Git @("push", "origin", $gitBranch)
+
+    if ($result.ExitCode -ne 0) {
+
+        throw "git push failed (your wallpapers are converted locally; fix the problem and run the script again, it is safe to repeat): $($result.Output.Trim())"
+    }
+
+    Write-Host "Pushed to origin/$gitBranch."
+
+    # --------------------------------------------------------
+    # Work out which files this commit added / modified / deleted.
+    #   modified or deleted -> CDN may hold an old copy -> purge
+    #   added or modified .webp -> must be served -> verify
+    # --------------------------------------------------------
+
+    if ($committed) {
+
+        $diff = Invoke-Git @("diff", "--name-status", "--no-renames", "HEAD~1", "HEAD")
+
+        if ($diff.ExitCode -eq 0) {
+
+            foreach ($line in ($diff.Output -split "`r?`n")) {
+
+                if ([string]::IsNullOrWhiteSpace($line)) { continue }
+
+                $parts = $line -split "`t", 2
+
+                if ($parts.Count -lt 2) { continue }
+
+                $code = $parts[0].Trim()
+                $path = $parts[1].Trim().Trim('"')
+
+                if (
+                    $path -ne "manifest.json" -and
+                    ($code -eq "M" -or $code -eq "D")
+                ) {
+                    [void]$purgePaths.Add($path)
+                }
+
+                if (
+                    ($code -eq "A" -or $code -eq "M") -and
+                    $path -like "*.webp"
+                ) {
+                    [void]$verifyPaths.Add($path)
+                }
+            }
+        }
+        else {
+
+            Write-Warning "Could not list changed files (git diff failed). Only the manifest will be purged."
+        }
+    }
+
+    if ($VerifyAll) {
+
+        $verifyPaths.Clear()
+
+        Get-ChildItem `
+            -Path $wallpapersRoot `
+            -Recurse `
+            -Filter "*.webp" `
+            -File |
+            ForEach-Object {
+
+                $relative = $_.FullName.Substring($repoRoot.Length + 1).Replace("\", "/")
+
+                [void]$verifyPaths.Add($relative)
+            }
+    }
+
+
+    # --------------------------------------------------------
+    # 2) PURGE THE CDN CACHE
+    # --------------------------------------------------------
+
+    Write-Host ""
+    Write-Host "============================================================"
+    Write-Host "PURGING CDN CACHE"
+    Write-Host "============================================================"
+    Write-Host ""
+
+    $purgeList = @($purgePaths | Select-Object -First 100)
+
+    if ($purgePaths.Count -gt 100) {
+
+        Write-Warning "$($purgePaths.Count) files need purging; only the first 100 are purged (purge limits). The rest expire from the cache on their own."
+    }
+
+    foreach ($purgePath in $purgeList) {
+
+        try {
+
+            Invoke-WebRequest `
+                -Uri "$purgeBase/$purgePath" `
+                -UseBasicParsing |
+                Out-Null
+
+            Write-Host "Purged: $purgePath"
+        }
+        catch {
+
+            Write-Warning "Purge failed for $purgePath : $($_.Exception.Message)"
+        }
+    }
+
+
+    # --------------------------------------------------------
+    # 3) CHECK THE CDN MANIFEST MATCHES THE LOCAL ONE
+    # --------------------------------------------------------
+
+    Write-Host ""
+    Write-Host "============================================================"
+    Write-Host "VERIFYING CDN"
+    Write-Host "============================================================"
+    Write-Host ""
+
+    $localManifest = Get-Content `
+        -LiteralPath "$repoRoot\manifest.json" `
+        -Raw |
+        ConvertFrom-Json
+
+    $localCounts = @{}
+
+    foreach ($category in $localManifest.categories) {
+
+        $localCounts[$category.id] = @($category.wallpapers).Count
+    }
+
+    $cdnManifestOk = $false
+    $lastMismatch = @()
+
+    for ($attempt = 1; $attempt -le 6; $attempt++) {
+
+        try {
+
+            $cdnManifest = (
+                Invoke-WebRequest `
+                    -Uri "$cdnBase/manifest.json" `
+                    -UseBasicParsing `
+                    -Headers @{ "Cache-Control" = "no-cache" }
+            ).Content | ConvertFrom-Json
+
+            $lastMismatch = @()
+
+            foreach ($id in $localCounts.Keys) {
+
+                $cdnCategory = $cdnManifest.categories |
+                    Where-Object { $_.id -eq $id }
+
+                $cdnCount = 0
+
+                if ($cdnCategory) {
+                    $cdnCount = @($cdnCategory.wallpapers).Count
+                }
+
+                if ($cdnCount -ne $localCounts[$id]) {
+
+                    $lastMismatch += "$id (local $($localCounts[$id]), CDN $cdnCount)"
+                }
+            }
+
+            if ($lastMismatch.Count -eq 0) {
+
+                $cdnManifestOk = $true
+                break
+            }
+
+            Write-Host "Attempt $attempt/6: CDN manifest not updated yet: $($lastMismatch -join ', ')"
+        }
+        catch {
+
+            Write-Host "Attempt $attempt/6: could not fetch CDN manifest: $($_.Exception.Message)"
+        }
+
+        if ($attempt -lt 6) {
+            Start-Sleep -Seconds 10
+        }
+    }
+
+    if ($cdnManifestOk) {
+
+        $totalLocal = ($localCounts.Values | Measure-Object -Sum).Sum
+
+        Write-Host "CDN manifest matches local manifest ($totalLocal wallpapers)."
+    }
+    else {
+
+        Write-Warning "CDN manifest still differs after retries: $($lastMismatch -join ', ')"
+        Write-Warning "Usually jsDelivr cache lag. Re-run this script in a few minutes (safe) or purge manually."
+    }
+
+
+    # --------------------------------------------------------
+    # 4) CHECK EVERY NEW / CHANGED IMAGE IS SERVED
+    # --------------------------------------------------------
+
+    $remaining = @($verifyPaths)
+    $cdnImagesChecked = $remaining.Count
+
+    for ($attempt = 1; $attempt -le 3 -and $remaining.Count -gt 0; $attempt++) {
+
+        $stillMissing = @()
+
+        foreach ($relative in $remaining) {
+
+            try {
+
+                $response = Invoke-WebRequest `
+                    -Uri "$cdnBase/$relative" `
+                    -Method Head `
+                    -UseBasicParsing
+
+                if ($response.StatusCode -ne 200) {
+                    throw "status $($response.StatusCode)"
+                }
+            }
+            catch {
+
+                $stillMissing += $relative
+            }
+        }
+
+        $remaining = $stillMissing
+
+        if ($remaining.Count -gt 0 -and $attempt -lt 3) {
+
+            Write-Host "Attempt $attempt/3: $($remaining.Count) file(s) not served yet, retrying..."
+
+            Start-Sleep -Seconds 10
+        }
+    }
+
+    $cdnImagesMissing = @($remaining)
+
+    Write-Host ""
+    Write-Host "Images checked on CDN: $cdnImagesChecked"
+
+    if ($cdnImagesMissing.Count -gt 0) {
+
+        Write-Warning "Not served by the CDN: $($cdnImagesMissing.Count)"
+
+        foreach ($relative in $cdnImagesMissing) {
+            Write-Host " - $cdnBase/$relative" -ForegroundColor Red
+        }
+    }
+    else {
+
+        Write-Host "All checked images are being served."
+    }
+}
+
+
+# ============================================================
+# FINAL REPORT
+# ============================================================
+
 Write-Host ""
 Write-Host "============================================================"
 Write-Host "WALLPAPER PUBLISH COMPLETE"
 Write-Host "============================================================"
+
+if ($NoPush) {
+
+    Write-Host "Local only (-NoPush): nothing was pushed."
+}
+elseif ($cdnManifestOk -and $cdnImagesMissing.Count -eq 0) {
+
+    Write-Host "Everything is live on the CDN."
+    Write-Host "If the app still shows fewer wallpapers, it is using its own cached manifest."
+}
+else {
+
+    Write-Host "Published to GitHub, but the CDN is not fully caught up yet (see warnings above)."
+}
+
+if ($problems.Count -gt 0) {
+
+    Write-Host ""
+    Write-Host "Reminder: $($problems.Count) source file problem(s) were reported earlier in this run."
+}
