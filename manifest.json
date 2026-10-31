@@ -6,11 +6,6 @@
                            "name":  "Abstract",
                            "wallpapers":  [
                                               {
-                                                  "id":  "abstract_057",
-                                                  "full":  "wallpapers/abstract/abstract_057.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_057.webp"
-                                              },
-                                              {
                                                   "id":  "abstract_003",
                                                   "full":  "wallpapers/abstract/abstract_003.webp",
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_003.webp"
@@ -56,11 +51,6 @@
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_020.webp"
                                               },
                                               {
-                                                  "id":  "abstract_021",
-                                                  "full":  "wallpapers/abstract/abstract_021.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_021.webp"
-                                              },
-                                              {
                                                   "id":  "abstract_022",
                                                   "full":  "wallpapers/abstract/abstract_022.webp",
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_022.webp"
@@ -84,11 +74,6 @@
                                                   "id":  "abstract_026",
                                                   "full":  "wallpapers/abstract/abstract_026.webp",
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_026.webp"
-                                              },
-                                              {
-                                                  "id":  "abstract_031",
-                                                  "full":  "wallpapers/abstract/abstract_031.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_031.webp"
                                               },
                                               {
                                                   "id":  "abstract_032",
@@ -201,6 +186,11 @@
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_056.webp"
                                               },
                                               {
+                                                  "id":  "abstract_057",
+                                                  "full":  "wallpapers/abstract/abstract_057.webp",
+                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_057.webp"
+                                              },
+                                              {
                                                   "id":  "abstract_058",
                                                   "full":  "wallpapers/abstract/abstract_058.webp",
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_058.webp"
@@ -256,11 +246,6 @@
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_068.webp"
                                               },
                                               {
-                                                  "id":  "abstract_069",
-                                                  "full":  "wallpapers/abstract/abstract_069.webp",
-                                                  "thumb":  "wallpapers/abstract/thumbs/abstract_069.webp"
-                                              },
-                                              {
                                                   "id":  "abstract_070",
                                                   "full":  "wallpapers/abstract/abstract_070.webp",
                                                   "thumb":  "wallpapers/abstract/thumbs/abstract_070.webp"
@@ -281,11 +266,6 @@
                            "id":  "architecture",
                            "name":  "Architecture",
                            "wallpapers":  [
-                                              {
-                                                  "id":  "architecture_008",
-                                                  "full":  "wallpapers/architecture/architecture_008.webp",
-                                                  "thumb":  "wallpapers/architecture/thumbs/architecture_008.webp"
-                                              },
                                               {
                                                   "id":  "architecture_001",
                                                   "full":  "wallpapers/architecture/architecture_001.webp",
@@ -320,6 +300,11 @@
                                                   "id":  "architecture_007",
                                                   "full":  "wallpapers/architecture/architecture_007.webp",
                                                   "thumb":  "wallpapers/architecture/thumbs/architecture_007.webp"
+                                              },
+                                              {
+                                                  "id":  "architecture_008",
+                                                  "full":  "wallpapers/architecture/architecture_008.webp",
+                                                  "thumb":  "wallpapers/architecture/thumbs/architecture_008.webp"
                                               },
                                               {
                                                   "id":  "architecture_009",
@@ -404,92 +389,6 @@
                                           ]
                        },
                        {
-                           "id":  "cats",
-                           "name":  "Cats",
-                           "wallpapers":  [
-                                              {
-                                                  "id":  "cats_014",
-                                                  "full":  "wallpapers/cats/cats_014.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_014.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_003",
-                                                  "full":  "wallpapers/cats/cats_003.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_003.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_004",
-                                                  "full":  "wallpapers/cats/cats_004.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_004.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_005",
-                                                  "full":  "wallpapers/cats/cats_005.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_005.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_006",
-                                                  "full":  "wallpapers/cats/cats_006.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_006.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_007",
-                                                  "full":  "wallpapers/cats/cats_007.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_007.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_008",
-                                                  "full":  "wallpapers/cats/cats_008.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_008.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_009",
-                                                  "full":  "wallpapers/cats/cats_009.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_009.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_010",
-                                                  "full":  "wallpapers/cats/cats_010.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_010.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_011",
-                                                  "full":  "wallpapers/cats/cats_011.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_011.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_012",
-                                                  "full":  "wallpapers/cats/cats_012.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_012.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_013",
-                                                  "full":  "wallpapers/cats/cats_013.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_013.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_015",
-                                                  "full":  "wallpapers/cats/cats_015.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_015.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_016",
-                                                  "full":  "wallpapers/cats/cats_016.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_016.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_017",
-                                                  "full":  "wallpapers/cats/cats_017.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_017.webp"
-                                              },
-                                              {
-                                                  "id":  "cats_018",
-                                                  "full":  "wallpapers/cats/cats_018.webp",
-                                                  "thumb":  "wallpapers/cats/thumbs/cats_018.webp"
-                                              }
-                                          ]
-                       },
-                       {
                            "id":  "city",
                            "name":  "City",
                            "wallpapers":  [
@@ -497,11 +396,6 @@
                                                   "id":  "city_001",
                                                   "full":  "wallpapers/city/city_001.webp",
                                                   "thumb":  "wallpapers/city/thumbs/city_001.webp"
-                                              },
-                                              {
-                                                  "id":  "city_002",
-                                                  "full":  "wallpapers/city/city_002.webp",
-                                                  "thumb":  "wallpapers/city/thumbs/city_002.webp"
                                               },
                                               {
                                                   "id":  "city_003",
@@ -595,209 +489,9 @@
                            "name":  "Cute",
                            "wallpapers":  [
                                               {
-                                                  "id":  "cute_046",
-                                                  "full":  "wallpapers/cute/cute_046.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_046.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_001",
-                                                  "full":  "wallpapers/cute/cute_001.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_001.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_002",
-                                                  "full":  "wallpapers/cute/cute_002.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_002.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_003",
-                                                  "full":  "wallpapers/cute/cute_003.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_003.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_004",
-                                                  "full":  "wallpapers/cute/cute_004.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_004.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_005",
-                                                  "full":  "wallpapers/cute/cute_005.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_005.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_006",
-                                                  "full":  "wallpapers/cute/cute_006.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_006.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_007",
-                                                  "full":  "wallpapers/cute/cute_007.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_007.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_008",
-                                                  "full":  "wallpapers/cute/cute_008.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_008.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_009",
-                                                  "full":  "wallpapers/cute/cute_009.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_009.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_010",
-                                                  "full":  "wallpapers/cute/cute_010.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_010.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_011",
-                                                  "full":  "wallpapers/cute/cute_011.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_011.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_012",
-                                                  "full":  "wallpapers/cute/cute_012.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_012.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_013",
-                                                  "full":  "wallpapers/cute/cute_013.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_013.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_014",
-                                                  "full":  "wallpapers/cute/cute_014.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_014.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_015",
-                                                  "full":  "wallpapers/cute/cute_015.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_015.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_016",
-                                                  "full":  "wallpapers/cute/cute_016.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_016.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_017",
-                                                  "full":  "wallpapers/cute/cute_017.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_017.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_027",
-                                                  "full":  "wallpapers/cute/cute_027.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_027.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_028",
-                                                  "full":  "wallpapers/cute/cute_028.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_028.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_029",
-                                                  "full":  "wallpapers/cute/cute_029.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_029.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_030",
-                                                  "full":  "wallpapers/cute/cute_030.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_030.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_031",
-                                                  "full":  "wallpapers/cute/cute_031.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_031.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_032",
-                                                  "full":  "wallpapers/cute/cute_032.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_032.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_033",
-                                                  "full":  "wallpapers/cute/cute_033.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_033.webp"
-                                              },
-                                              {
                                                   "id":  "cute_034",
                                                   "full":  "wallpapers/cute/cute_034.webp",
                                                   "thumb":  "wallpapers/cute/thumbs/cute_034.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_035",
-                                                  "full":  "wallpapers/cute/cute_035.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_035.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_036",
-                                                  "full":  "wallpapers/cute/cute_036.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_036.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_037",
-                                                  "full":  "wallpapers/cute/cute_037.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_037.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_038",
-                                                  "full":  "wallpapers/cute/cute_038.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_038.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_040",
-                                                  "full":  "wallpapers/cute/cute_040.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_040.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_041",
-                                                  "full":  "wallpapers/cute/cute_041.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_041.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_042",
-                                                  "full":  "wallpapers/cute/cute_042.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_042.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_043",
-                                                  "full":  "wallpapers/cute/cute_043.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_043.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_044",
-                                                  "full":  "wallpapers/cute/cute_044.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_044.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_045",
-                                                  "full":  "wallpapers/cute/cute_045.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_045.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_065",
-                                                  "full":  "wallpapers/cute/cute_065.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_065.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_066",
-                                                  "full":  "wallpapers/cute/cute_066.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_066.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_067",
-                                                  "full":  "wallpapers/cute/cute_067.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_067.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_068",
-                                                  "full":  "wallpapers/cute/cute_068.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_068.webp"
-                                              },
-                                              {
-                                                  "id":  "cute_069",
-                                                  "full":  "wallpapers/cute/cute_069.webp",
-                                                  "thumb":  "wallpapers/cute/thumbs/cute_069.webp"
                                               },
                                               {
                                                   "id":  "cute_070",
@@ -831,39 +525,14 @@
                            "name":  "Dreamy",
                            "wallpapers":  [
                                               {
-                                                  "id":  "dreamy_021",
-                                                  "full":  "wallpapers/dreamy/dreamy_021.webp",
-                                                  "thumb":  "wallpapers/dreamy/thumbs/dreamy_021.webp"
-                                              },
-                                              {
-                                                  "id":  "dreamy_001",
-                                                  "full":  "wallpapers/dreamy/dreamy_001.webp",
-                                                  "thumb":  "wallpapers/dreamy/thumbs/dreamy_001.webp"
-                                              },
-                                              {
-                                                  "id":  "dreamy_002",
-                                                  "full":  "wallpapers/dreamy/dreamy_002.webp",
-                                                  "thumb":  "wallpapers/dreamy/thumbs/dreamy_002.webp"
-                                              },
-                                              {
                                                   "id":  "dreamy_003",
                                                   "full":  "wallpapers/dreamy/dreamy_003.webp",
                                                   "thumb":  "wallpapers/dreamy/thumbs/dreamy_003.webp"
                                               },
                                               {
-                                                  "id":  "dreamy_004",
-                                                  "full":  "wallpapers/dreamy/dreamy_004.webp",
-                                                  "thumb":  "wallpapers/dreamy/thumbs/dreamy_004.webp"
-                                              },
-                                              {
                                                   "id":  "dreamy_005",
                                                   "full":  "wallpapers/dreamy/dreamy_005.webp",
                                                   "thumb":  "wallpapers/dreamy/thumbs/dreamy_005.webp"
-                                              },
-                                              {
-                                                  "id":  "dreamy_006",
-                                                  "full":  "wallpapers/dreamy/dreamy_006.webp",
-                                                  "thumb":  "wallpapers/dreamy/thumbs/dreamy_006.webp"
                                               },
                                               {
                                                   "id":  "dreamy_007",
@@ -934,11 +603,6 @@
                                                   "id":  "dreamy_020",
                                                   "full":  "wallpapers/dreamy/dreamy_020.webp",
                                                   "thumb":  "wallpapers/dreamy/thumbs/dreamy_020.webp"
-                                              },
-                                              {
-                                                  "id":  "dreamy_022",
-                                                  "full":  "wallpapers/dreamy/dreamy_022.webp",
-                                                  "thumb":  "wallpapers/dreamy/thumbs/dreamy_022.webp"
                                               },
                                               {
                                                   "id":  "dreamy_023",
@@ -1037,11 +701,6 @@
                            "name":  "Flowers",
                            "wallpapers":  [
                                               {
-                                                  "id":  "flowers_008",
-                                                  "full":  "wallpapers/flowers/flowers_008.webp",
-                                                  "thumb":  "wallpapers/flowers/thumbs/flowers_008.webp"
-                                              },
-                                              {
                                                   "id":  "flowers_002",
                                                   "full":  "wallpapers/flowers/flowers_002.webp",
                                                   "thumb":  "wallpapers/flowers/thumbs/flowers_002.webp"
@@ -1070,6 +729,11 @@
                                                   "id":  "flowers_007",
                                                   "full":  "wallpapers/flowers/flowers_007.webp",
                                                   "thumb":  "wallpapers/flowers/thumbs/flowers_007.webp"
+                                              },
+                                              {
+                                                  "id":  "flowers_008",
+                                                  "full":  "wallpapers/flowers/flowers_008.webp",
+                                                  "thumb":  "wallpapers/flowers/thumbs/flowers_008.webp"
                                               },
                                               {
                                                   "id":  "flowers_009",
@@ -1419,11 +1083,6 @@
                            "name":  "Illustrated",
                            "wallpapers":  [
                                               {
-                                                  "id":  "illustrated_022",
-                                                  "full":  "wallpapers/illustrated/illustrated_022.webp",
-                                                  "thumb":  "wallpapers/illustrated/thumbs/illustrated_022.webp"
-                                              },
-                                              {
                                                   "id":  "illustrated_023",
                                                   "full":  "wallpapers/illustrated/illustrated_023.webp",
                                                   "thumb":  "wallpapers/illustrated/thumbs/illustrated_023.webp"
@@ -1520,11 +1179,6 @@
                                                   "thumb":  "wallpapers/minimal/thumbs/minimal_011.webp"
                                               },
                                               {
-                                                  "id":  "minimal_012",
-                                                  "full":  "wallpapers/minimal/minimal_012.webp",
-                                                  "thumb":  "wallpapers/minimal/thumbs/minimal_012.webp"
-                                              },
-                                              {
                                                   "id":  "minimal_013",
                                                   "full":  "wallpapers/minimal/minimal_013.webp",
                                                   "thumb":  "wallpapers/minimal/thumbs/minimal_013.webp"
@@ -1555,11 +1209,6 @@
                            "id":  "nature",
                            "name":  "Nature",
                            "wallpapers":  [
-                                              {
-                                                  "id":  "nature_032",
-                                                  "full":  "wallpapers/nature/nature_032.webp",
-                                                  "thumb":  "wallpapers/nature/thumbs/nature_032.webp"
-                                              },
                                               {
                                                   "id":  "nature_005",
                                                   "full":  "wallpapers/nature/nature_005.webp",
@@ -1666,6 +1315,11 @@
                                                   "thumb":  "wallpapers/nature/thumbs/nature_031.webp"
                                               },
                                               {
+                                                  "id":  "nature_032",
+                                                  "full":  "wallpapers/nature/nature_032.webp",
+                                                  "thumb":  "wallpapers/nature/thumbs/nature_032.webp"
+                                              },
+                                              {
                                                   "id":  "nature_033",
                                                   "full":  "wallpapers/nature/nature_033.webp",
                                                   "thumb":  "wallpapers/nature/thumbs/nature_033.webp"
@@ -1751,11 +1405,6 @@
                            "id":  "scenery",
                            "name":  "Scenery",
                            "wallpapers":  [
-                                              {
-                                                  "id":  "scenery_055",
-                                                  "full":  "wallpapers/scenery/scenery_055.webp",
-                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_055.webp"
-                                              },
                                               {
                                                   "id":  "scenery_001",
                                                   "full":  "wallpapers/scenery/scenery_001.webp",
@@ -1900,6 +1549,11 @@
                                                   "id":  "scenery_054",
                                                   "full":  "wallpapers/scenery/scenery_054.webp",
                                                   "thumb":  "wallpapers/scenery/thumbs/scenery_054.webp"
+                                              },
+                                              {
+                                                  "id":  "scenery_055",
+                                                  "full":  "wallpapers/scenery/scenery_055.webp",
+                                                  "thumb":  "wallpapers/scenery/thumbs/scenery_055.webp"
                                               }
                                           ]
                        },
@@ -1907,36 +1561,6 @@
                            "id":  "Sci-Fi",
                            "name":  "Sci-Fi",
                            "wallpapers":  [
-                                              {
-                                                  "id":  "Sci-Fi_001",
-                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_001.webp",
-                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_001.webp"
-                                              },
-                                              {
-                                                  "id":  "Sci-Fi_002",
-                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_002.webp",
-                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_002.webp"
-                                              },
-                                              {
-                                                  "id":  "Sci-Fi_003",
-                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_003.webp",
-                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_003.webp"
-                                              },
-                                              {
-                                                  "id":  "Sci-Fi_004",
-                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_004.webp",
-                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_004.webp"
-                                              },
-                                              {
-                                                  "id":  "Sci-Fi_005",
-                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_005.webp",
-                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_005.webp"
-                                              },
-                                              {
-                                                  "id":  "Sci-Fi_006",
-                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_006.webp",
-                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_006.webp"
-                                              },
                                               {
                                                   "id":  "Sci-Fi_007",
                                                   "full":  "wallpapers/Sci-Fi/Sci-Fi_007.webp",
@@ -1948,14 +1572,24 @@
                                                   "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_008.webp"
                                               },
                                               {
-                                                  "id":  "Sci-Fi_010",
-                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_010.webp",
-                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_010.webp"
+                                                  "id":  "Sci-Fi_012",
+                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_012.webp",
+                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_012.webp"
                                               },
                                               {
-                                                  "id":  "Sci-Fi_011",
-                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_011.webp",
-                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_011.webp"
+                                                  "id":  "Sci-Fi_013",
+                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_013.webp",
+                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_013.webp"
+                                              },
+                                              {
+                                                  "id":  "Sci-Fi_014",
+                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_014.webp",
+                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_014.webp"
+                                              },
+                                              {
+                                                  "id":  "Sci-Fi_015",
+                                                  "full":  "wallpapers/Sci-Fi/Sci-Fi_015.webp",
+                                                  "thumb":  "wallpapers/Sci-Fi/thumbs/Sci-Fi_015.webp"
                                               }
                                           ]
                        },
@@ -2055,11 +1689,6 @@
                            "name":  "Vehicles",
                            "wallpapers":  [
                                               {
-                                                  "id":  "vehicles_040",
-                                                  "full":  "wallpapers/vehicles/vehicles_040.webp",
-                                                  "thumb":  "wallpapers/vehicles/thumbs/vehicles_040.webp"
-                                              },
-                                              {
                                                   "id":  "vehicles_001",
                                                   "full":  "wallpapers/vehicles/vehicles_001.webp",
                                                   "thumb":  "wallpapers/vehicles/thumbs/vehicles_001.webp"
@@ -2098,11 +1727,6 @@
                                                   "id":  "vehicles_008",
                                                   "full":  "wallpapers/vehicles/vehicles_008.webp",
                                                   "thumb":  "wallpapers/vehicles/thumbs/vehicles_008.webp"
-                                              },
-                                              {
-                                                  "id":  "vehicles_009",
-                                                  "full":  "wallpapers/vehicles/vehicles_009.webp",
-                                                  "thumb":  "wallpapers/vehicles/thumbs/vehicles_009.webp"
                                               },
                                               {
                                                   "id":  "vehicles_010",
@@ -2200,16 +1824,6 @@
                                                   "thumb":  "wallpapers/vehicles/thumbs/vehicles_028.webp"
                                               },
                                               {
-                                                  "id":  "vehicles_029",
-                                                  "full":  "wallpapers/vehicles/vehicles_029.webp",
-                                                  "thumb":  "wallpapers/vehicles/thumbs/vehicles_029.webp"
-                                              },
-                                              {
-                                                  "id":  "vehicles_030",
-                                                  "full":  "wallpapers/vehicles/vehicles_030.webp",
-                                                  "thumb":  "wallpapers/vehicles/thumbs/vehicles_030.webp"
-                                              },
-                                              {
                                                   "id":  "vehicles_031",
                                                   "full":  "wallpapers/vehicles/vehicles_031.webp",
                                                   "thumb":  "wallpapers/vehicles/thumbs/vehicles_031.webp"
@@ -2245,14 +1859,14 @@
                                                   "thumb":  "wallpapers/vehicles/thumbs/vehicles_037.webp"
                                               },
                                               {
-                                                  "id":  "vehicles_038",
-                                                  "full":  "wallpapers/vehicles/vehicles_038.webp",
-                                                  "thumb":  "wallpapers/vehicles/thumbs/vehicles_038.webp"
-                                              },
-                                              {
                                                   "id":  "vehicles_039",
                                                   "full":  "wallpapers/vehicles/vehicles_039.webp",
                                                   "thumb":  "wallpapers/vehicles/thumbs/vehicles_039.webp"
+                                              },
+                                              {
+                                                  "id":  "vehicles_040",
+                                                  "full":  "wallpapers/vehicles/vehicles_040.webp",
+                                                  "thumb":  "wallpapers/vehicles/thumbs/vehicles_040.webp"
                                               },
                                               {
                                                   "id":  "vehicles_041",
@@ -2273,16 +1887,6 @@
                                                   "id":  "vehicles_044",
                                                   "full":  "wallpapers/vehicles/vehicles_044.webp",
                                                   "thumb":  "wallpapers/vehicles/thumbs/vehicles_044.webp"
-                                              },
-                                              {
-                                                  "id":  "vehicles_045",
-                                                  "full":  "wallpapers/vehicles/vehicles_045.webp",
-                                                  "thumb":  "wallpapers/vehicles/thumbs/vehicles_045.webp"
-                                              },
-                                              {
-                                                  "id":  "vehicles_046",
-                                                  "full":  "wallpapers/vehicles/vehicles_046.webp",
-                                                  "thumb":  "wallpapers/vehicles/thumbs/vehicles_046.webp"
                                               },
                                               {
                                                   "id":  "vehicles_047",
